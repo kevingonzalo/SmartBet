@@ -1,0 +1,135 @@
+/* header */
+.header {
+  z-index: 10 !important;
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 50%);
+  place-content: center;
+  place-items: center;
+  height: 100vh;
+  position: relative;
+}
+.left {
+  z-index: 1;
+  text-align: left;
+  color: var(--color-white);
+  width: 100%;
+  margin-top: 5%;
+}
+.left h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.left h4 {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+}
+.header a {
+  z-index: 1;
+  color: var(--color-black);
+  padding: 1rem 2.6rem;
+  border-radius: 30px;
+  margin-right: 3rem;
+  box-shadow: var(--box-shadow-btn);
+  border: none;
+  text-decoration: none;
+  box-shadow: var(--box-shadow-btn);
+  font-size: 1rem;
+  background-color: var(--color-green);
+  transition: box-shadow 0.3s;
+}
+.header a:hover {
+  box-shadow: var(--box-shadow-btn-hover);
+}
+
+.header-img {
+  z-index: 1;
+  margin-left: 50px;
+  margin-top: 35%;
+  width: 400px;
+}
+/* imagenes de fondo */
+.img {
+  position: absolute;
+  left: 13%;
+  user-select: none;
+  z-index: 0;
+  filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.uno {
+  top: -20vh;
+  height: 400px;
+  z-index: -1;
+  width: 1000px;
+}
+.dos {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  bottom: 0%;
+  left: 65vw;
+  z-index: -1;
+  width: 600px;
+  user-select: none;
+}
+.tres {
+  bottom: 10%;
+  opacity: 0.8;
+  left: -10vw;
+  z-index: 0;
+  width: 400px;
+}
+@media (max-width: 1075px) {
+  .header {
+    gap: 0;
+  }
+  .left {
+    margin-top: 5%;
+  }
+  .left h4 {
+    font-size: 1.2rem;
+  }
+  .left h1 {
+    font-size: 2.8rem;
+  }
+  .header-img {
+    width: 320px;
+  }
+}
+@media (max-width: 700px) {
+  .tres {
+    bottom: 10%;
+    left: -30vw;
+  }
+  .header {
+    padding-top: 76px;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+  }
+  .left {
+    order: 2;
+  }
+  .header-img {
+    order: 1;
+    margin: 0;
+    width: 330px;
+    margin-top: 0%;
+  }
+  .left {
+    margin-top: 0;
+    width: 100%;
+  }
+  .left h4 {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .left h1 {
+    font-size: 2.5rem;
+  }
+  .header a {
+    margin: 0;
+  }
+}

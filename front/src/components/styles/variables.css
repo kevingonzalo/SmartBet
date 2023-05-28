@@ -1,0 +1,9 @@
+:root {
+  --color-backgound: #111111;
+  --color-green: #36e55e;
+  --color-black: #000;
+  --color-white: #fff;
+  --text-shadow-white: 1px 1px 1px #fff;
+  --box-shadow-btn: 0 0 15px #46ef7999;
+  --box-shadow-btn-hover: 0px 0px 20px 2px #46ef7999;
+}

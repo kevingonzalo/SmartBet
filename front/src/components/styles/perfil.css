@@ -1,0 +1,8 @@
+.Perfil {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--color-white);
+  justify-content: center;
+  align-items: center;
+}

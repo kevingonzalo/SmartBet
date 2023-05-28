@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+  font-family: Outfit, sans-serif;
+  background-color: var(--color-backgound);
+  position: relative;
+  min-height: 100vh;
+}
+section {
+  scroll-margin-top: 5rem;
+}
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+main {
+  animation: aparecer 0.5s ease forwards;
+}
+.error-message {
+  animation: aparecer 0.5s ease forwards;
+  background-color: #fca5a5;
+  color: #2e1e1e;
+  padding: 0.5rem 1rem;
+  border-radius: 7px;
+  font-weight: bold;
+  text-align: center;
+}
+.success-message {
+  animation: aparecer 0.5s ease forwards;
+  background-color: #abfca5;
+  color: #133417;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}

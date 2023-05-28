@@ -1,0 +1,129 @@
+/* imagenes verde  */
+.img-verde-planes-uno {
+  position: absolute;
+  left: -50%;
+  bottom: -10%;
+  opacity: 0.5;
+  z-index: -1;
+  user-select: none;
+}
+.img-verde-planes-dos {
+  position: absolute;
+  z-index: -1;
+  user-select: none;
+  opacity: 0.4;
+  left: 20%;
+  bottom: -50%;
+}
+.img-verde-planes-tres {
+  position: absolute;
+  user-select: none;
+  opacity: 0.4;
+  z-index: -1;
+  bottom: 10%;
+}
+.planes {
+  position: relative;
+  color: var(--color-white);
+  margin: 3rem 0;
+  padding: 5rem 0;
+  text-align: center;
+  padding-top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.planes h1 {
+  font-weight: bold;
+  font-size: 2rem;
+}
+.planes-parrafo {
+  width: 50vw;
+  text-align: center;
+  margin: auto;
+}
+.lista-planes {
+  padding: 3rem 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 250px);
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  z-index: 3 !important;
+}
+.plan {
+  border-radius: 1.5rem;
+  background-color: var(--color-black);
+  width: 100%;
+  overflow: hidden;
+}
+.precio-plan {
+  margin: 0;
+  padding: 0;
+  color: var(--color-green);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.precio-plan span {
+  font-size: 3rem;
+}
+.plan h3 {
+  background-color: var(--color-green);
+  color: var(--color-black);
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1.1rem;
+  margin: 0;
+}
+.caracteristicas-plan p {
+  margin: 0;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  font-weight: 100;
+}
+.caracteristicas-plan img {
+  width: 20px;
+}
+.caracteristicas-plan span {
+  padding-left: 1rem;
+}
+.barra-espaciadora {
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-green);
+  border: 1px solid var(--color-green);
+  opacity: 1;
+  height: 2px;
+  width: 70%;
+  margin: auto;
+}
+
+.plan button {
+  margin: 1.2rem;
+  background-color: var(--color-green);
+  border-radius: 50px;
+  border: none;
+  box-shadow: var(--box-shadow-btn);
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+}
+.plan button:hover {
+  box-shadow: var(--box-shadow-btn-hover);
+}
+@media (max-width: 1000px) {
+  .lista-planes {
+    grid-template-columns: repeat(auto-fill, 45%);
+    gap: 50px;
+  }
+}
+@media (max-width: 800px) {
+  .lista-planes {
+    grid-template-columns: repeat(auto-fill, 100%);
+    gap: 50px;
+    padding: 1rem 0;
+  }
+  .planes-parrafo {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}

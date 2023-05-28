@@ -1,0 +1,149 @@
+.navbar {
+  position: fixed;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  height: 76px;
+  padding: 0 3.5rem;
+  width: 100vw;
+  z-index: 999;
+  justify-content: space-between;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(15px);
+  background-color: #00000067;
+}
+.lista-btn {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  justify-content: space-between;
+}
+.lista-navbar {
+  margin: 0;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  list-style: none;
+}
+.lista-navbar li {
+  margin: 1.2rem;
+}
+.link,
+.btn-sesion {
+  cursor: pointer;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: all 0.4s;
+}
+.link:hover,
+.btn-sesion:hover {
+  color: var(--color-green);
+}
+.btn-sesion {
+  background: none;
+  border: none;
+}
+.btn-entrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black);
+  padding: 0.5rem 2.5rem;
+  height: 3rem;
+  border-radius: 30px;
+  margin-right: 3rem;
+  box-shadow: var(--box-shadow-btn);
+  border: none;
+  text-decoration: none;
+  box-shadow: var(--box-shadow-btn);
+  font-size: 1rem;
+  background-color: var(--color-green);
+  transition: box-shadow 0.3s;
+}
+.btn-entrar:hover {
+  box-shadow: var(--box-shadow-btn-hover);
+}
+/* responsive */
+.btn-responsive {
+  position: fixed;
+  right: 5%;
+  border: none;
+  font-size: 1.7rem;
+  color: var(--color-white);
+  background: none;
+  display: none;
+  transition: all 0.3s;
+}
+.btn-responsive:hover {
+  text-shadow: var(--text-shadow-white);
+}
+@keyframes aparecer {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes desaparecer {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 1000px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+  .btn-responsive {
+    display: block;
+  }
+
+  .lista-btn {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 100%;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-black);
+    border-bottom: 2px solid var(--color-green);
+  }
+  .lista-navbar {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+  }
+  .lista-navbar li {
+    margin: 0.5rem 0;
+  }
+
+  .btn-entrar {
+    width: 90vw;
+    margin: 1rem auto;
+    color: var(--color-white);
+    margin-bottom: 2rem;
+  }
+  .lista-btn.active {
+    display: flex;
+    animation-name: aparecer;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+}
