@@ -2,9 +2,8 @@ import "./styles/register.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-const URL = "http://localhost:8000";
 
-export default function Register() {
+export default function Register({ URL }) {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");

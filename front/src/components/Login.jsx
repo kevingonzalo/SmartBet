@@ -3,9 +3,7 @@ import axios from "axios";
 import "./styles/login.css";
 import { Link, useNavigate } from "react-router-dom";
 
-const URL = "http://localhost:8000";
-
-export default function Login() {
+export default function Login({ URL }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // Variable de estado para el mensaje de error
