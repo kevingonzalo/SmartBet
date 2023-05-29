@@ -12,14 +12,6 @@ const register = async (req, res) => {
     res.status(204).json({ error: `¡El correo debe ser de tipo "ejemplo@gmail.com"!` });
     return;
   }
-  // se fija si la longitud de la contraseña es entre 8 y 20 caracteres
-  if (password.length < MIN_PASSWORD_LENGTH) {
-    res.status(201).json({ error: "¡La Contraseña Debe Contener almenos 8 Carateres!" });
-    return;
-  } else if (password.length > MAX_PASSWORD_LENGTH) {
-    res.status(202).json({ error: "¡La Contraseña Debe Contener 20 Carateres o Menos!" });
-    return;
-  }
 
   let passwordHash = await bcrypt.hash(password, 8); //encriptar contraseña
   const query = `SELECT * FROM usuarios WHERE email = "${email}"`;
@@ -29,6 +21,15 @@ const register = async (req, res) => {
       if (results.length > 0) {
         res.status(203).json({ error: "el usuario ya existe" });
       } else {
+        // se fija si la longitud de la contraseña es entre 8 y 20 caracteres
+        if (password.length < MIN_PASSWORD_LENGTH) {
+          res.status(201).json({ error: "¡La Contraseña Debe Contener almenos 8 Carateres!" });
+          return;
+        } else if (password.length > MAX_PASSWORD_LENGTH) {
+          res.status(202).json({ error: "¡La Contraseña Debe Contener 20 Carateres o Menos!" });
+          return;
+        }
+        // checkea que las contraseñas sean iguales
         if (password !== repeatPassword) {
           res.status(205).json({ error: "Las contraseñas no coinciden" });
           return;

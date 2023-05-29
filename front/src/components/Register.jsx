@@ -2,7 +2,11 @@ import "./styles/register.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import username from "./img/username.svg";
+import iconPassword from "./img/iconPassword.svg";
+import mostrarPass from "./img/mostrarPass.png";
+import ocultarPass from "./img/ocultarPass.png";
+import ellipse from "./img/ellipse.webp";
 export default function Register({ URL }) {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -11,6 +15,8 @@ export default function Register({ URL }) {
   const [errorMessage, setErrorMessage] = useState(""); // Variable de estado para el mensaje de error
   const [successMessage, setSuccessMessage] = useState(""); // Variable de estado para el mensaje de éxito
   const [isLoading, setIsLoading] = useState(false); // Variable de estado para controlar el estado de carga
+  const [showPassword, setShowPassword] = useState(false); // si muestra la contraseña o no
+  const [termsAccepted, setTermsAccepted] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     // Establece un temporizador para limpiar los mensajes después de 3 segundos
@@ -23,9 +29,16 @@ export default function Register({ URL }) {
     return () => clearTimeout(timer);
   }, [errorMessage, successMessage]);
 
+  const handleTermsChange = (e) => {
+    setTermsAccepted(e.target.checked);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!termsAccepted) {
+      setErrorMessage("Debes aceptar los términos de uso");
+      return;
+    }
     // meto los datos de lo inputs en el objeto formData
     const formData = {
       email: email,
@@ -33,7 +46,6 @@ export default function Register({ URL }) {
       password: password,
       repeatPassword: repeatPassword,
     };
-
     axios
       // hago la peticion post a la base de datos
       .post(`${URL}/register`, formData)
@@ -68,6 +80,7 @@ export default function Register({ URL }) {
   };
   return (
     <div className="register">
+      <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde uno" />
       <form onSubmit={handleSubmit} className="form-register">
         {isLoading && (
           <div className="spinner-border spinner" role="status">
@@ -76,7 +89,8 @@ export default function Register({ URL }) {
         )}
         <h4>Regístrate gratis</h4>
         <div className="inputs">
-          <div className="mb-3">
+          <div className="input">
+            <i className="fa-solid fa-envelope fa-sm icon-input"></i>
             <input
               type="email"
               placeholder="Email"
@@ -87,27 +101,35 @@ export default function Register({ URL }) {
               autoComplete="on"
             />
           </div>
-          <div className="mb-3">
+          <div className="input">
+            <img className="icon-input" src={username} alt="icono username login de smartbet" />
             <input
               type="text"
               placeholder="UserName"
               className="form-control"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
-              required
             />
           </div>
-          <div className="mb-3">
+          <div className="input">
+            <img className="icon-input" src={iconPassword} alt="icono password login de smartbet" />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               className="form-control"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <img
+              className="icon-mostar-pass"
+              onClick={() => setShowPassword(!showPassword)}
+              src={`${showPassword ? mostrarPass : ocultarPass}`}
+              alt="icono ocultar password login de smartbet"
+            />
           </div>
-          <div className="mb-3">
+          <div className="input">
+            <img className="icon-input" src={iconPassword} alt="icono password login de smartbet" />
             <input
               type="password"
               placeholder="Repite tu password"
@@ -118,9 +140,18 @@ export default function Register({ URL }) {
             />
           </div>
         </div>
-        <p className="texto-register">
-          ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
-        </p>
+        <div className="links-forms">
+          <p className="texto-register">
+            ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
+          </p>
+          <div className="terms">
+            <input type="checkbox" id="termsCheckbox" checked={termsAccepted} onChange={handleTermsChange} />
+            <label htmlFor="termsCheckbox">
+              Acepto los <Link to="/terminos-y-condiciones">Términos y Condiciones</Link>
+            </label>
+          </div>
+        </div>
+        <br />
         {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Muestra el mensaje de error si existe */}
         {successMessage && <p className="success-message">{successMessage}</p>}{" "}
         {/* Muestra el mensaje de éxito si existe */}
@@ -128,6 +159,8 @@ export default function Register({ URL }) {
           Regístrate
         </button>
       </form>
+      <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde dos" />
+      <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde tres" />
     </div>
   );
 }

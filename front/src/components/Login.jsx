@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles/login.css";
 import { Link, useNavigate } from "react-router-dom";
+import iconPassword from "./img/iconPassword.svg";
+import mostrarPass from "./img/mostrarPass.png";
+import ocultarPass from "./img/ocultarPass.png";
 
+import ellipse from "./img/ellipse.webp";
 export default function Login({ URL, setUser, fetchUserProfile }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // Variable de estado para el mensaje de error
   const [successMessage, setSuccessMessage] = useState(""); // Variable de estado para el mensaje de éxito
   const [isLoading, setIsLoading] = useState(false); // Variable de estado para controlar el estado de carga
-
+  const [showPassword, setShowPassword] = useState(false); // si muestra la contraseña o no
   const navigate = useNavigate();
   useEffect(() => {
     // Establece un temporizador para limpiar los mensajes después de 3 segundos
@@ -63,6 +67,7 @@ export default function Login({ URL, setUser, fetchUserProfile }) {
   };
   return (
     <div className="Login">
+      <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde uno" />
       <form onSubmit={handleSubmit} className="form-login">
         {isLoading && (
           <div className="spinner-border spinner" role="status">
@@ -71,7 +76,8 @@ export default function Login({ URL, setUser, fetchUserProfile }) {
         )}
         <h4>Iniciar sesión</h4>
         <div className="inputs">
-          <div className="mb-3">
+          <div className="input">
+            <i className="fa-solid fa-envelope fa-sm icon-input"></i>
             <input
               type="email"
               placeholder="Email"
@@ -82,19 +88,27 @@ export default function Login({ URL, setUser, fetchUserProfile }) {
               autoComplete="on"
             />
           </div>
-          <div className="mb-3">
+          <div className="input">
+            <img className="icon-input" src={iconPassword} alt="icono password login de smartbet" />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               className="form-control"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+
+            <img
+              className="icon-mostar-pass"
+              onClick={() => setShowPassword(!showPassword)}
+              src={`${showPassword ? mostrarPass : ocultarPass}`}
+              alt="icono ocultar password login de smartbet"
+            />
           </div>
         </div>
         <p>
-          <a href="/recuperar-contraseña">¿Has olvidado tu contraseña?</a>
+          <Link to="/recuperar-contraseña">¿Has olvidado tu contraseña?</Link>
         </p>
         <p className="texto-login">
           ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
@@ -106,6 +120,8 @@ export default function Login({ URL, setUser, fetchUserProfile }) {
           Iniciar sesión
         </button>
       </form>
+      <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde dos" />
+      <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde tres" />
     </div>
   );
 }
