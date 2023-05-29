@@ -9,6 +9,9 @@ export default function NavBarNoSesion() {
   const [menuResponsive, setMenuResponsive] = useState(false);
   const [linkBack, setLinkBack] = useState(false);
 
+  const handleOpenCloseMenu = () => {
+    setMenuResponsive(!menuResponsive);
+  };
   // activa y desactiva el menu de responsive
   const handleButtonResponsive = () => {
     setMenuResponsive(!menuResponsive);
@@ -19,16 +22,21 @@ export default function NavBarNoSesion() {
     setMenuResponsive(false);
     setLinkBack(true);
   };
+  // pone en false y deshabilita el menu de responsive
+  const handleButtonHomefalse = () => {
+    setMenuResponsive(false);
+    setLinkBack(false);
+  };
 
   // al darle a entrar cambie los links para volver a home
 
   return (
     <div className="navbar">
-      <button onClick={handleButtonResponsive} className="btn-responsive">
+      <button onClick={handleOpenCloseMenu} className="btn-responsive">
         <i className="fa-solid fa-bars"></i>
       </button>
       {linkBack ? (
-        <Link className="link" to="/" onClick={() => setLinkBack(false)}>
+        <Link className="link" to="/" onClick={handleButtonHomefalse}>
           <img src={logoInvisible} onClick={handleButtonHome} alt="Logo de Pagina Oficial de SmartBet" />
         </Link>
       ) : (
@@ -40,7 +48,7 @@ export default function NavBarNoSesion() {
         <ul className="lista-navbar">
           <li>
             {linkBack ? (
-              <Link className="link" to="/" onClick={() => setLinkBack(false)}>
+              <Link className="link" to="/" onClick={handleButtonHomefalse}>
                 Cómo funciona
               </Link>
             ) : (
@@ -58,7 +66,7 @@ export default function NavBarNoSesion() {
           </li>
           <li>
             {linkBack ? (
-              <Link className="link" to="/" onClick={() => setLinkBack(false)}>
+              <Link className="link" to="/" onClick={handleButtonHomefalse}>
                 FAQ
               </Link>
             ) : (
@@ -76,7 +84,7 @@ export default function NavBarNoSesion() {
           </li>
           <li>
             {linkBack ? (
-              <Link className="link" to="/" onClick={() => setLinkBack(false)}>
+              <Link className="link" to="/" onClick={handleButtonHomefalse}>
                 Planes
               </Link>
             ) : (
@@ -94,7 +102,7 @@ export default function NavBarNoSesion() {
           </li>
           <li>
             {linkBack ? (
-              <Link className="link" to="/" onClick={() => setLinkBack(false)}>
+              <Link className="link" to="/" onClick={handleButtonHomefalse}>
                 Contacto
               </Link>
             ) : (
