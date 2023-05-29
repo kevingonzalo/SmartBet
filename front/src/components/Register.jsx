@@ -52,8 +52,12 @@ export default function Register({ URL }) {
           setErrorMessage("El usuario ya existe");
         } else if (response.status === 404) {
           setErrorMessage("Error en la solicitud");
-        } else if (response.status === 500) {
-          setErrorMessage("");
+        } else if (response.status === 201) {
+          setErrorMessage("¡La Contraseña Debe Contener almenos 8 Carateres!");
+        } else if (response.status === 202) {
+          setErrorMessage("¡La Contraseña Debe Contener 20 Carateres o Menos!");
+        } else if (response.status === 204) {
+          setErrorMessage(`¡El correo debe ser de tipo "ejemplo@gmail.com"!`);
         }
       })
       .catch((error) => {

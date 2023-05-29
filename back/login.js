@@ -27,7 +27,7 @@ const login = (req, res) => {
         // busca si la contraseña es correcta
         if (result) {
           // Generar un token de autenticación utilizando JWT y token aleatorio
-          const token = jwt.sign({ userId: user.id, email: user.email }, secretKey, { expiresIn: "2h" });
+          const token = jwt.sign({ userId: user.id, email: user.email }, secretKey, { expiresIn: "7d" });
           // Actualizar el campo 'token' en la fila correspondiente del usuario en la base de datos
           const updateQuery = `UPDATE usuarios SET token = "${token}" WHERE id = ${user.id}`;
 

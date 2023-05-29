@@ -4,6 +4,22 @@ import connection from "./connection.js";
 const register = async (req, res) => {
   console.log(req.body);
   const { email, userName, password, repeatPassword } = req.body;
+  const MIN_PASSWORD_LENGTH = 8;
+  const MAX_PASSWORD_LENGTH = 20;
+  // verifica que el mail sea valido
+  const emailRegex = /^[\w-]+(?:\.[\w-]+)*@(?:gmail|hotmail|outlook|yahoo)\.[a-zA-Z]{2,7}$/;
+  if (!email.match(emailRegex)) {
+    res.status(204).json({ error: `¡El correo debe ser de tipo "ejemplo@gmail.com"!` });
+    return;
+  }
+  // se fija si la longitud de la contraseña es entre 8 y 20 caracteres
+  if (password.length < MIN_PASSWORD_LENGTH) {
+    res.status(201).json({ error: "¡La Contraseña Debe Contener almenos 8 Carateres!" });
+    return;
+  } else if (password.length > MAX_PASSWORD_LENGTH) {
+    res.status(202).json({ error: "¡La Contraseña Debe Contener 20 Carateres o Menos!" });
+    return;
+  }
 
   let passwordHash = await bcrypt.hash(password, 8); //encriptar contraseña
   const query = `SELECT * FROM usuarios WHERE email = "${email}"`;
@@ -11,7 +27,6 @@ const register = async (req, res) => {
     .then((results) => {
       // verifico si el usuario existe
       if (results.length > 0) {
-        console.log(results);
         res.status(203).json({ error: "el usuario ya existe" });
       } else {
         if (password !== repeatPassword) {
