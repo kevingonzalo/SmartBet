@@ -1,9 +1,10 @@
 import jwt from "jsonwebtoken";
-import crypto from "crypto";
 import bcrypt from "bcrypt";
 import mysql from "mysql2";
 import dotenv from "dotenv";
+
 dotenv.config();
+
 const conexion = mysql.createPool({
   host: process.env.HOST || "localhost",
   user: process.env.USER || "root",
@@ -11,12 +12,8 @@ const conexion = mysql.createPool({
   port: process.env.PORT,
   database: process.env.DATABASE || "prueba_smartbet",
 });
-// Generar clave secreta para el token
-const generateSecretKey = () => {
-  return crypto.randomBytes(32).toString("hex");
-};
 
-const TOKEN_SECRET = generateSecretKey();
+const secretKey = process.env.SECRET_KEY;
 
 const login = (req, res) => {
   const { email, password } = req.body;
@@ -29,9 +26,19 @@ const login = (req, res) => {
       bcrypt.compare(password, pass, (err, result) => {
         // busca si la contraseña es correcta
         if (result) {
-          // Generar un token de autenticación utilizando JWT
-          const token = jwt.sign({ userId: user.id, email: user.email }, TOKEN_SECRET, { expiresIn: "2h" });
-          res.status(200).json({ token });
+          // Generar un token de autenticación utilizando JWT y token aleatorio
+          const token = jwt.sign({ userId: user.id, email: user.email }, secretKey, { expiresIn: "2h" });
+          // Actualizar el campo 'token' en la fila correspondiente del usuario en la base de datos
+          const updateQuery = `UPDATE usuarios SET token = "${token}" WHERE id = ${user.id}`;
+
+          conexion.query(updateQuery, (updateError, updateResults) => {
+            if (updateError) {
+              console.log(updateError);
+              res.status(500).json({ error: "Error al actualizar el token en la base de datos" });
+            } else {
+              res.status(200).json({ token });
+            }
+          });
         } else {
           console.log(err);
           res.status(220).json({ err: "Error Contraseña Incorrecta" });

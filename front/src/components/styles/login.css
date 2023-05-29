@@ -31,9 +31,10 @@
   border-radius: 30px;
 }
 .form-login p {
-  margin: 0;
-  padding-bottom: 0.3rem;
+  margin: 0 auto;
+  padding-bottom: 0.4rem;
   text-align: left;
+  width: 90%;
 }
 .btn-login {
   display: flex;
@@ -51,7 +52,7 @@
   font-size: 1rem;
   background-color: var(--color-green);
   transition: box-shadow 0.3s;
-  width: 100%;
+  width: 90%;
   margin: 1rem auto;
 }
 .btn-login:hover {

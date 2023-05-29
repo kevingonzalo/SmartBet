@@ -1,22 +1,19 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import "./styles/perfil.css";
-const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>Loading ...</div>;
-  }
-
+const Perfil = ({ user }) => {
   return (
-    isAuthenticated && (
-      <main className="Perfil">
-        <h1>Tu perfil</h1>
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
-      </main>
-    )
+    <div className="perfil">
+      {user ? (
+        <div>
+          <h2>Perfil de Usuario</h2>
+          <p>Nombre: {user.username}</p>
+          <p>Email: {user.email}</p>
+          {/* Mostrar otros datos del usuario */}
+        </div>
+      ) : (
+        <p>No estas registrado...</p>
+      )}
+    </div>
   );
 };
 
-export default Profile;
+export default Perfil;

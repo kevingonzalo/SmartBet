@@ -17,7 +17,7 @@ export default function Register({ URL }) {
     const timer = setTimeout(() => {
       setErrorMessage("");
       setSuccessMessage("");
-    }, 3000);
+    }, 2000);
 
     // Limpia el temporizador al desmontar el componente
     return () => clearTimeout(timer);
@@ -26,6 +26,7 @@ export default function Register({ URL }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // meto los datos de lo inputs en el objeto formData
     const formData = {
       email: email,
       userName: userName,
@@ -34,15 +35,15 @@ export default function Register({ URL }) {
     };
 
     axios
+      // hago la peticion post a la base de datos
       .post(`${URL}/register`, formData)
       .then((response) => {
         if (response.status === 200) {
           setSuccessMessage("El usuario se registró con éxito");
-          setErrorMessage("");
           setIsLoading(true);
           setTimeout(() => {
-            navigate("/");
-          }, 3000);
+            navigate("/login");
+          }, 2000);
         } else if (response.status === 205) {
           setErrorMessage("Las contraseñas no coinciden");
         } else if (response.status === 203) {
@@ -52,12 +53,12 @@ export default function Register({ URL }) {
         } else if (response.status === 404) {
           setErrorMessage("Error en la solicitud");
         } else if (response.status === 500) {
-          setErrorMessage("error al consultar la base de datos");
+          setErrorMessage("");
         }
       })
       .catch((error) => {
         console.log(error);
-        setErrorMessage("¡Se deben Rellenar todos los Campos!");
+        setErrorMessage("error!");
         setSuccessMessage("");
       });
   };
@@ -78,6 +79,8 @@ export default function Register({ URL }) {
               className="form-control"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
+              autoComplete="on"
             />
           </div>
           <div className="mb-3">
@@ -87,6 +90,7 @@ export default function Register({ URL }) {
               className="form-control"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
+              required
             />
           </div>
           <div className="mb-3">
@@ -96,6 +100,7 @@ export default function Register({ URL }) {
               className="form-control"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <div className="mb-3">
@@ -105,6 +110,7 @@ export default function Register({ URL }) {
               className="form-control"
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
+              required
             />
           </div>
         </div>

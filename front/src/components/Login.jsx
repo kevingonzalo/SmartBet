@@ -3,7 +3,7 @@ import axios from "axios";
 import "./styles/login.css";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Login({ URL }) {
+export default function Login({ URL, setUser, fetchUserProfile }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // Variable de estado para el mensaje de error
@@ -16,7 +16,7 @@ export default function Login({ URL }) {
     const timer = setTimeout(() => {
       setErrorMessage("");
       setSuccessMessage("");
-    }, 3000);
+    }, 2000);
 
     // Limpia el temporizador al desmontar el componente
     return () => clearTimeout(timer);
@@ -42,12 +42,14 @@ export default function Login({ URL }) {
           setErrorMessage("La Contraseña es Incorrecta");
         } else if (response.status === 200) {
           setIsLoading(true);
+          // setea el user y lo pone en true para saber que el usuario inicio sesion
+          setUser(true);
+          // carga la informacion del perfil en user
+          fetchUserProfile();
           setSuccessMessage("Inicio de sesión exitoso");
-          setEmail("");
-          setPassword("");
           setTimeout(() => {
             navigate("/");
-          }, 3000);
+          }, 2000);
         } else if (response.status === 229) {
           setErrorMessage("El Usuario con ese Email no Existe!");
         }
@@ -77,6 +79,7 @@ export default function Login({ URL }) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoComplete="on"
             />
           </div>
           <div className="mb-3">
