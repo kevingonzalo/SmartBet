@@ -34,10 +34,11 @@
 }
 .planes h1 {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 .planes-parrafo {
-  width: 50vw;
+  width: 80vw;
+  font-size: 1.5rem;
   text-align: center;
   margin: auto;
 }
@@ -45,10 +46,10 @@
   padding: 3rem 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 250px);
+  grid-template-columns: repeat(3, 25%);
   align-items: center;
   justify-content: center;
-  gap: 70px;
+  gap: 50px;
   z-index: 3 !important;
 }
 .plan {
@@ -62,27 +63,27 @@
   padding: 0;
   color: var(--color-green);
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .precio-plan span {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 .plan h3 {
   background-color: var(--color-green);
   color: var(--color-black);
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: bold;
   padding: 1.1rem;
   margin: 0;
 }
 .caracteristicas-plan p {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1.7rem;
   padding: 0.5rem;
   font-weight: 100;
 }
 .caracteristicas-plan img {
-  width: 20px;
+  width: 30px;
 }
 .caracteristicas-plan span {
   padding-left: 1rem;
@@ -99,9 +100,10 @@
 }
 
 .plan button {
-  margin: 1.2rem;
+  margin: 1.5rem;
   background-color: var(--color-green);
   border-radius: 50px;
+  font-size: 1.5rem;
   border: none;
   box-shadow: var(--box-shadow-btn);
   font-weight: bold;
@@ -109,6 +111,37 @@
 }
 .plan button:hover {
   box-shadow: var(--box-shadow-btn-hover);
+}
+@media (max-width: 1500px) {
+  .planes h1 {
+    font-size: 2rem;
+  }
+  .planes-parrafo {
+    width: 50vw;
+    font-size: 1rem;
+  }
+  .lista-planes {
+    grid-template-columns: repeat(3, 25%);
+  }
+  .precio-plan {
+    font-size: 2rem;
+  }
+  .plan h3 {
+    font-size: 1.2rem;
+  }
+  .precio-plan span {
+    font-size: 3rem;
+  }
+
+  .caracteristicas-plan p {
+    font-size: 1rem;
+  }
+  .caracteristicas-plan img {
+    width: 20px;
+  }
+  .plan button {
+    font-size: 1rem;
+  }
 }
 @media (max-width: 1000px) {
   .lista-planes {

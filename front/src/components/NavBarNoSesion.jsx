@@ -35,15 +35,17 @@ export default function NavBarNoSesion() {
       <button onClick={handleOpenCloseMenu} className="btn-responsive">
         <i className="fa-solid fa-bars"></i>
       </button>
-      {linkBack ? (
-        <Link className="link" to="/" onClick={handleButtonHomefalse}>
-          <img src={logoInvisible} onClick={handleButtonHome} alt="Logo de Pagina Oficial de SmartBet" />
-        </Link>
-      ) : (
-        <ScrollLink className="link" to="home" smooth={true} duration={500}>
-          <img src={logoInvisible} onClick={handleButtonHome} alt="Logo de Pagina Oficial de SmartBet" />
-        </ScrollLink>
-      )}
+      <div className="img-navbar">
+        {linkBack ? (
+          <Link className="link" to="/" onClick={handleButtonHomefalse}>
+            <img src={logoInvisible} onClick={handleButtonHome} alt="Logo de Pagina Oficial de SmartBet" />
+          </Link>
+        ) : (
+          <ScrollLink className="link" to="home" smooth={true} duration={500}>
+            <img src={logoInvisible} onClick={handleButtonHome} alt="Logo de Pagina Oficial de SmartBet" />
+          </ScrollLink>
+        )}
+      </div>
       <div className={`lista-btn ${menuResponsive ? "active" : ""}`}>
         <ul className="lista-navbar">
           <li>

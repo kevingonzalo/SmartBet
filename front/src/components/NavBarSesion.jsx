@@ -36,9 +36,11 @@ export default function NavBarSesion({ URL }) {
       <button onClick={handleButtonResponsive} className="btn-responsive">
         <i className="fa-solid fa-bars"></i>
       </button>
-      <Link className="link" to="/">
-        <img src={logoInvisible} onClick={handleButtonHome} alt="Logo de Pagina Oficial de SmartBet" />
-      </Link>
+      <div className="img-navbar">
+        <Link className="link" to="/">
+          <img src={logoInvisible} onClick={handleButtonHome} alt="Logo de Pagina Oficial de SmartBet" />
+        </Link>
+      </div>
       <div className={`lista-btn ${menuResponsive ? "active" : ""}`}>
         <ul className="lista-navbar">
           <li>

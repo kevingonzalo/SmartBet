@@ -1,12 +1,12 @@
-import "./styles/register.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import username from "./img/username.svg";
-import iconPassword from "./img/iconPassword.svg";
 import mostrarPass from "./img/mostrarPass.png";
 import ocultarPass from "./img/ocultarPass.png";
 import ellipse from "./img/ellipse.webp";
+import "./styles/login-register.css";
+import "./styles/img-fondo.css";
+
 export default function Register({ URL }) {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -79,18 +79,18 @@ export default function Register({ URL }) {
       });
   };
   return (
-    <div className="register">
+    <div className="container-form">
       <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde uno" />
-      <form onSubmit={handleSubmit} className="form-register">
+      <form onSubmit={handleSubmit} className="form-login-register">
         {isLoading && (
           <div className="spinner-border spinner" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
         )}
-        <h4>Regístrate gratis</h4>
+        <h1>Regístrate gratis</h1>
         <div className="inputs">
           <div className="input">
-            <i className="fa-solid fa-envelope fa-sm icon-input"></i>
+            <i className="fa-solid fa-envelope icon-input"></i>
             <input
               type="email"
               placeholder="Email"
@@ -102,7 +102,7 @@ export default function Register({ URL }) {
             />
           </div>
           <div className="input">
-            <img className="icon-input" src={username} alt="icono username login de smartbet" />
+            <i className="fa-solid fa-user icon-input"></i>
             <input
               type="text"
               placeholder="UserName"
@@ -112,7 +112,7 @@ export default function Register({ URL }) {
             />
           </div>
           <div className="input">
-            <img className="icon-input" src={iconPassword} alt="icono password login de smartbet" />
+            <i className="fa-solid fa-lock icon-input"></i>
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Password"
@@ -129,7 +129,7 @@ export default function Register({ URL }) {
             />
           </div>
           <div className="input">
-            <img className="icon-input" src={iconPassword} alt="icono password login de smartbet" />
+            <i className="fa-solid fa-lock icon-input"></i>
             <input
               type="password"
               placeholder="Repite tu password"
@@ -140,12 +140,12 @@ export default function Register({ URL }) {
             />
           </div>
         </div>
-        <div className="links-forms">
-          <p className="texto-register">
+        <div className="texto-form">
+          <p>
             ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
           </p>
-          <div className="terms">
-            <input type="checkbox" id="termsCheckbox" checked={termsAccepted} onChange={handleTermsChange} />
+          <div className="terminos-condiciones">
+            <input type="checkbox" checked={termsAccepted} onChange={handleTermsChange} />
             <label htmlFor="termsCheckbox">
               Acepto los <Link to="/terminos-y-condiciones">Términos y Condiciones</Link>
             </label>
@@ -155,7 +155,7 @@ export default function Register({ URL }) {
         {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Muestra el mensaje de error si existe */}
         {successMessage && <p className="success-message">{successMessage}</p>}{" "}
         {/* Muestra el mensaje de éxito si existe */}
-        <button type="submit" className=" btn-register ">
+        <button type="submit" className="btn-form">
           Regístrate
         </button>
       </form>

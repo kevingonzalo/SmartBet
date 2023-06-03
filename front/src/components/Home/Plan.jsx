@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 export default function Plan({
   titulo,
   precio,
@@ -10,7 +11,15 @@ export default function Plan({
   comunidad,
   comunidadText,
   textButton,
+  user,
 }) {
+  const navigate = useNavigate();
+  const handleLinkPagar = () => {
+    navigate("/pagar");
+  };
+  const handleLinkLogin = () => {
+    navigate("/login");
+  };
   return (
     <li className="plan">
       <h3>{titulo}</h3>
@@ -38,7 +47,12 @@ export default function Plan({
           <span>{comunidadText}</span>
         </p>
       </div>
-      <button>{textButton}</button>
+
+      {user ? (
+        <button onClick={handleLinkPagar}>Comprar Plan</button>
+      ) : (
+        <button onClick={handleLinkLogin}>{textButton}</button>
+      )}
     </li>
   );
 }

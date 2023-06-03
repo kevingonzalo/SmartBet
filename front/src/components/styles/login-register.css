@@ -8,32 +8,12 @@
     transform: scale(1);
   }
 }
-/* imagenes de fondo */
-
-.fondo-verde {
-  position: absolute;
-  z-index: -1;
-  user-select: none;
-  opacity: 0.8;
-}
-.uno {
-  left: 0%;
-}
-.dos {
-  left: 75%;
-  opacity: 1;
-}
-.tres {
-  bottom: 10%;
-  left: 15%;
-}
-
-/* fin de imagenes fondo */
-.Login {
+/* styles Generales */
+.container-form {
   animation: aparecer 0.5s ease forwards;
-  display: flex;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -41,69 +21,72 @@
   color: var(--color-white);
   z-index: 3 !important;
 }
-.Login h4 {
+.form-login-register h1 {
   font-weight: bold;
-  margin: 1rem 0;
+  margin: 5vh 0;
+  margin-bottom: 1vh;
+  font-size: 4vh;
 }
-.form-login {
+.form-login-register {
   background-color: black;
-  width: 450px;
-  padding: 3rem 2rem;
-  margin-top: 3rem;
+  min-width: 30%;
+  padding: 3vh;
   border-radius: 30px;
 }
-.form-login p {
-  margin: 0.5rem auto;
-  padding-bottom: 0.4rem;
-  text-align: left;
-  width: 90%;
-  padding-left: 10px;
-}
-.btn-login {
+.btn-form {
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-black);
-  padding: 0.5rem 2rem;
-  height: 3rem;
-  border-radius: 30px;
-  margin-right: 3rem;
+  padding: 1.5vh 3vh;
+  border-radius: 5vh;
   box-shadow: var(--box-shadow-btn);
   border: none;
   text-decoration: none;
   box-shadow: var(--box-shadow-btn);
-  font-size: 1rem;
+  font-size: 2.3vh;
   background-color: var(--color-green);
   transition: box-shadow 0.3s;
   width: max-content;
-  margin: 1rem auto;
+  margin: 0rem auto;
 }
-.btn-login:hover {
+.btn-form:hover {
   box-shadow: var(--box-shadow-btn-hover);
 }
-.texto-login button {
-  background: none;
-  color: #0066ff;
-  border: none;
+.texto-form {
+  width: 95%;
+  margin: 0.5rem auto;
+  margin-bottom: 0;
+  text-align: left;
+  padding-left: 10px;
+  font-size: 2.3vh;
 }
+.texto-form p {
+  margin: 0.5rem 0;
+}
+.texto-form a {
+  text-decoration: none;
+}
+
+/* inputs */
 .input {
   position: relative;
-  width: 90%;
-  padding: 0;
+  padding: 0.5vh;
+  width: 95%;
   margin: auto;
-  padding: 0.3rem;
 }
 .input input {
   border-radius: 50px;
   letter-spacing: 1px;
-  font-size: 0.9rem;
-  padding: 10px 0;
-  padding-left: 2.3rem;
+  font-size: 2.2vh;
+  padding: 1.3vh 0;
+  padding-left: 5vh;
   user-select: none;
 }
 .icon-input {
+  font-size: 2vh;
   position: absolute;
-  left: 20px;
+  left: 2.5vh;
   top: 50%;
   transform: translateY(-50%);
   color: #5f5f5f;
@@ -111,7 +94,8 @@
 .icon-mostar-pass {
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 3vh;
+  width: 2.5vh;
   transform: translateY(-50%);
   cursor: pointer;
 }
@@ -119,20 +103,28 @@
   color: #aaa;
 }
 
-@media (max-width: 800px) {
-  .Login {
-    padding: 0 1rem;
-    width: 70%;
-    margin: auto;
-  }
-  .form-login {
-    padding: 1rem;
-    width: 100%;
-    margin: auto;
+/* register */
+.terminos-condiciones label {
+  padding-left: 10px;
+}
+.terminos-condiciones input[type="checkbox"] {
+  transform: scale(1.4);
+  cursor: pointer;
+}
+/* responsive */
+@media (max-width: 1400px) {
+  .terminos-condiciones input[type="checkbox"] {
+    transform: scale(1);
   }
 }
-@media (max-width: 600px) {
-  .Login {
-    width: 100%;
+@media (max-width: 800px) {
+  .form-login-register {
+    width: 95%;
+  }
+  .btn-form {
+    font-size: 2vh;
+  }
+  .texto-form {
+    font-size: 2vh;
   }
 }

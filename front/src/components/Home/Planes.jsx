@@ -5,7 +5,7 @@ import engranaje from "../img/engranaje.svg";
 import comunidad from "../img/comunidad.svg";
 import Plan from "./Plan";
 import ellipse from "../img/ellipse.webp";
-export default function Planes() {
+export default function Planes({ user }) {
   return (
     <section id="Planes" className="planes">
       <img src={ellipse} alt="imagen de fondo SmartBet" className="img-verde-planes-uno" />
@@ -30,6 +30,7 @@ export default function Planes() {
           comunidad={comunidad}
           comunidadText="Acceso a la Comunidad"
           textButton="Regístrate Gratis"
+          user={user}
         />
         <Plan
           titulo="Premium Mensual"
@@ -44,6 +45,7 @@ export default function Planes() {
           comunidad={comunidad}
           comunidadText="Comunidad Premium"
           textButton="Comprar Plan"
+          user={user}
         />
         <Plan
           titulo="Premium anual"
@@ -58,6 +60,7 @@ export default function Planes() {
           comunidad={comunidad}
           comunidadText="Comunidad Premium"
           textButton="Comprar Plan"
+          user={user}
         />
       </ul>
     </section>

@@ -1,0 +1,23 @@
+/* imagenes de fondo */
+
+/* Login y Register */
+.fondo-verde {
+  position: absolute;
+  z-index: -1;
+  user-select: none;
+  opacity: 0.8;
+  width: 1000px;
+  height: 500px;
+}
+.uno {
+  left: 23%;
+  bottom: 60%;
+}
+.dos {
+  right: -30%;
+  opacity: 1;
+}
+.tres {
+  bottom: 10%;
+  left: 10%;
+}

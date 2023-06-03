@@ -5,13 +5,13 @@ import FAQ from "./Home/FAQ";
 import "./styles/home.css";
 import Planes from "./Home/Planes";
 import Contacto from "./Home/Contacto";
-export default function Home() {
+export default function Home({ user }) {
   return (
     <div id="home" className="home">
       <Header />
       <Funcion />
       <FAQ />
-      <Planes />
+      <Planes user={user} />
       <Contacto />
     </div>
   );

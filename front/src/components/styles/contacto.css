@@ -4,7 +4,7 @@
   bottom: 0%;
   width: 450px;
   height: 600px;
-  left: 0;
+  left: 6%;
 }
 .img-verde-dos-contact {
   position: absolute;
@@ -20,7 +20,7 @@
   padding-bottom: 3rem;
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 100%;
   margin: auto;
   justify-content: space-around;
   position: relative;
@@ -31,7 +31,7 @@
   position: relative;
 }
 .img-bombilla {
-  width: 280px;
+  width: 450px;
   z-index: 3;
   position: relative;
   z-index: 3 !important;
@@ -42,13 +42,13 @@
 }
 .right-contacto h1 {
   font-weight: bold;
-  font-size: 2.4rem;
+  font-size: 4rem;
   padding: 0.5rem;
   z-index: 3 !important;
 }
 .mail {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: auto;
   padding-bottom: 5rem;
   z-index: 3 !important;
@@ -76,9 +76,23 @@
 }
 .img-right-contacto img {
   margin: 1rem;
-  width: 45px;
+  width: 60px;
 }
 
+@media (max-width: 1560px) {
+  .img-bombilla {
+    width: 250px;
+  }
+  .right-contacto h1 {
+    font-size: 2.3rem;
+  }
+  .mail {
+    font-size: 1.5rem;
+  }
+  .img-right-contacto img {
+    width: 40px;
+  }
+}
 @media (max-width: 800px) {
   .contacto {
     flex-direction: column;

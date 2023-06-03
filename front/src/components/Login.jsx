@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./styles/login.css";
 import { Link, useNavigate } from "react-router-dom";
-import iconPassword from "./img/iconPassword.svg";
 import mostrarPass from "./img/mostrarPass.png";
 import ocultarPass from "./img/ocultarPass.png";
-
+import "./styles/login-register.css";
+import "./styles/img-fondo.css";
 import ellipse from "./img/ellipse.webp";
 export default function Login({ URL, setUser, fetchUserProfile }) {
   const [email, setEmail] = useState("");
@@ -66,18 +65,18 @@ export default function Login({ URL, setUser, fetchUserProfile }) {
       });
   };
   return (
-    <div className="Login">
+    <div className="container-form">
       <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde uno" />
-      <form onSubmit={handleSubmit} className="form-login">
+      <form onSubmit={handleSubmit} className="form-login-register">
         {isLoading && (
           <div className="spinner-border spinner" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
         )}
-        <h4>Iniciar sesión</h4>
+        <h1>Iniciar sesión</h1>
         <div className="inputs">
           <div className="input">
-            <i className="fa-solid fa-envelope fa-sm icon-input"></i>
+            <i className="fa-solid fa-envelope icon-input"></i>
             <input
               type="email"
               placeholder="Email"
@@ -89,7 +88,7 @@ export default function Login({ URL, setUser, fetchUserProfile }) {
             />
           </div>
           <div className="input">
-            <img className="icon-input" src={iconPassword} alt="icono password login de smartbet" />
+            <i className="fa-solid fa-lock icon-input"></i>
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Password"
@@ -98,7 +97,6 @@ export default function Login({ URL, setUser, fetchUserProfile }) {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-
             <img
               className="icon-mostar-pass"
               onClick={() => setShowPassword(!showPassword)}
@@ -107,16 +105,19 @@ export default function Login({ URL, setUser, fetchUserProfile }) {
             />
           </div>
         </div>
-        <p>
-          <Link to="/recuperar-contraseña">¿Has olvidado tu contraseña?</Link>
-        </p>
-        <p className="texto-login">
-          ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
-        </p>
+        <div className="texto-form">
+          <p>
+            <Link to="/recuperar-contraseña">¿Has olvidado tu contraseña?</Link>
+          </p>
+          <p>
+            ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
+          </p>
+        </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Muestra el mensaje de error si existe */}
         {successMessage && <p className="success-message">{successMessage}</p>}{" "}
         {/* Muestra el mensaje de éxito si existe */}
-        <button type="submit" className=" btn-login">
+        <br />
+        <button type="submit" className="btn-form">
           Iniciar sesión
         </button>
       </form>

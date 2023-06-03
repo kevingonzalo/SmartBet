@@ -53,7 +53,7 @@ export default function Funcion() {
             ganando la máxima cantidad posible.
           </p>
         </div>
-        <img src={trophy} className="dos-trofeo" alt="trofeo imagen de muestra de como funciona smartbet" />
+        <img src={trophy} className="funcion-img" alt="trofeo imagen de muestra de como funciona smartbet" />
       </main>
     </section>
   );

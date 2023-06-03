@@ -23,7 +23,6 @@
   align-items: center;
   text-align: left;
   justify-content: space-between;
-  gap: 50px;
   width: 90%;
   color: var(--color-white);
   margin: 5rem auto;
@@ -34,21 +33,40 @@
   z-index: 3 !important;
 }
 .funcion-img {
-  width: 380px;
+  width: 500px;
 }
 .right {
   width: 50%;
   z-index: 3 !important;
 }
 .right h1 {
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: bold;
   margin-bottom: 0rem;
   z-index: 3 !important;
 }
 .right p {
-  font-size: 1.1rem;
+  font-size: 1.7rem;
   z-index: 3 !important;
+}
+@media (max-width: 1500px) {
+  .funcion-img {
+    width: 400px;
+  }
+  .right {
+    width: 50%;
+    z-index: 3 !important;
+  }
+  .right h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0rem;
+    z-index: 3 !important;
+  }
+  .right p {
+    font-size: 1.3rem;
+    z-index: 3 !important;
+  }
 }
 @media (max-width: 1209px) {
   .img-verde-dos {
@@ -86,13 +104,11 @@
   }
   /* imagenes verdes de fondo */
   .img-verde-dos {
-    .img-verde-dos {
-      position: absolute;
-      user-select: none;
-      right: -65%;
-      bottom: -100%;
-      z-index: -1;
-    }
+    position: absolute;
+    user-select: none;
+    right: -65%;
+    bottom: -100%;
+    z-index: -1;
   }
 }
 @media (max-width: 700px) {
@@ -112,7 +128,7 @@
   text-align: center;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 330px);
+  grid-template-columns: repeat(auto-fill, 30%);
   place-content: center;
   place-items: center;
   gap: 50px;
@@ -126,15 +142,30 @@
   z-index: 3 !important;
 }
 .logo img {
-  width: 80px;
+  width: 120px;
   z-index: 3 !important;
 }
-
-/* funcion-trofeo */
-
-.uno-trofeo {
-  order: 1;
+.logo h3 {
+  font-size: 2rem;
 }
-.dos-trofeo {
-  order: 2;
+.logo p {
+  font-size: 1.5rem;
+}
+@media (max-width: 1500px) {
+  .logo img {
+    width: 90px;
+    z-index: 3 !important;
+  }
+  .logo h3 {
+    font-size: 1.5rem;
+  }
+  .logo p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 800px) {
+  .logos-funcion {
+    grid-template-columns: repeat(auto-fill, 50%);
+    gap: 30px;
+  }
 }
