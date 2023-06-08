@@ -30,3 +30,6 @@ const PORT = 8000;
 app.listen(PORT, () => {
   console.log(`Servidor encendido en el puerto: ${PORT}`);
 });
+app.get("/", (req, res) => {
+  res.send("servidor funcionando correctamente!");
+});

@@ -1,8 +1,6 @@
 import express from "express";
 import conexion from "../connect/conexion.js";
 
-const router = express.Router();
-
 // Ruta para eliminar el tokenPass de la base de datos
 const deleteTokenPass = (req, res) => {
   const token = req.headers.authorization.split(" ")[1]; // Obtener el token del encabezado Authorization
