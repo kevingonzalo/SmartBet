@@ -1,70 +1,48 @@
-/* imagenes verdes de fondo */
-.img-verde-uno {
-  position: absolute;
-  width: 100%;
-  left: -65%;
-  top: 0;
-  height: 800px;
-  z-index: 0;
-  opacity: 0.6;
-  user-select: none;
-  filter: blur(10px);
-}
-.img-verde-dos {
-  position: absolute;
-  user-select: none;
-  right: -65%;
-  bottom: -400%;
-  z-index: -1;
-}
 /* funcion  */
 .funcion {
   display: flex;
   align-items: center;
   text-align: left;
   justify-content: space-between;
-  width: 90%;
+  width: 80%;
   color: var(--color-white);
   margin: 5rem auto;
-  margin-bottom: 10rem;
   padding: 5rem 0;
   position: relative;
   user-select: none;
   z-index: 3 !important;
 }
 .funcion-img {
-  width: 500px;
+  width: 50vh;
 }
 .right {
-  width: 50%;
+  width: 55%;
   z-index: 3 !important;
 }
 .right h1 {
-  font-size: 4rem;
+  width: 70%;
+  font-size: 6vh;
   font-weight: bold;
   margin-bottom: 0rem;
   z-index: 3 !important;
 }
 .right p {
-  font-size: 1.7rem;
+  font-size: 2.6vh;
   z-index: 3 !important;
 }
-@media (max-width: 1500px) {
-  .funcion-img {
-    width: 400px;
-  }
-  .right {
-    width: 50%;
-    z-index: 3 !important;
-  }
+@media (max-width: 1400px) {
   .right h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 0rem;
-    z-index: 3 !important;
+    width: 100%;
   }
+  .funcion {
+    width: 90%;
+  }
+  .funcion-img {
+    width: 350px;
+  }
+
   .right p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     z-index: 3 !important;
   }
 }
@@ -82,6 +60,7 @@
 @media (max-width: 900px) {
   .funcion {
     gap: 30px;
+    width: 100%;
   }
   .funcion img {
     width: 300px;
@@ -128,34 +107,27 @@
   text-align: center;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 30%);
+  grid-template-columns: repeat(auto-fill, 25%);
   place-content: center;
   place-items: center;
   gap: 50px;
   color: var(--color-white);
   z-index: 3 !important;
 }
-.logo h3 {
-  font-weight: bold;
-  margin: 0.5rem;
-  font-size: 1.5rem;
-  z-index: 3 !important;
-}
 .logo img {
-  width: 120px;
+  width: 12vh;
   z-index: 3 !important;
 }
 .logo h3 {
-  font-size: 2rem;
+  font-size: 3.3vh;
+  font-weight: bold;
+  margin: 1rem;
+  z-index: 3 !important;
 }
 .logo p {
-  font-size: 1.5rem;
+  font-size: 2.3vh;
 }
 @media (max-width: 1500px) {
-  .logo img {
-    width: 90px;
-    z-index: 3 !important;
-  }
   .logo h3 {
     font-size: 1.5rem;
   }

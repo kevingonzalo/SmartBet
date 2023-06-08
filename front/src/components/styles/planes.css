@@ -1,27 +1,3 @@
-/* imagenes verde  */
-.img-verde-planes-uno {
-  position: absolute;
-  left: -50%;
-  bottom: -10%;
-  opacity: 0.5;
-  z-index: -1;
-  user-select: none;
-}
-.img-verde-planes-dos {
-  position: absolute;
-  z-index: -1;
-  user-select: none;
-  opacity: 0.4;
-  left: 20%;
-  bottom: -50%;
-}
-.img-verde-planes-tres {
-  position: absolute;
-  user-select: none;
-  opacity: 0.4;
-  z-index: -1;
-  bottom: 10%;
-}
 .planes {
   position: relative;
   color: var(--color-white);
@@ -34,13 +10,13 @@
 }
 .planes h1 {
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 5vh;
 }
 .planes-parrafo {
   width: 80vw;
-  font-size: 1.5rem;
+  font-size: 2.4vh;
   text-align: center;
-  margin: auto;
+  margin: 2rem auto;
 }
 .lista-planes {
   padding: 3rem 0;
@@ -49,7 +25,7 @@
   grid-template-columns: repeat(3, 25%);
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  gap: 60px;
   z-index: 3 !important;
 }
 .plan {
@@ -62,28 +38,29 @@
   margin: 0;
   padding: 0;
   color: var(--color-green);
-  font-weight: bold;
-  font-size: 2rem;
+
+  font-size: 3vh;
 }
 .precio-plan span {
-  font-size: 4rem;
+  font-weight: bold;
+  font-size: 7.7vh;
 }
 .plan h3 {
   background-color: var(--color-green);
   color: var(--color-black);
-  font-size: 2rem;
+  font-size: 3vh;
   font-weight: bold;
   padding: 1.1rem;
   margin: 0;
 }
 .caracteristicas-plan p {
   margin: 0;
-  font-size: 1.7rem;
+  font-size: 2.4vh;
   padding: 0.5rem;
   font-weight: 100;
 }
 .caracteristicas-plan img {
-  width: 30px;
+  width: 3.5vh;
 }
 .caracteristicas-plan span {
   padding-left: 1rem;
@@ -103,7 +80,7 @@
   margin: 1.5rem;
   background-color: var(--color-green);
   border-radius: 50px;
-  font-size: 1.5rem;
+  font-size: 2.3vh;
   border: none;
   box-shadow: var(--box-shadow-btn);
   font-weight: bold;

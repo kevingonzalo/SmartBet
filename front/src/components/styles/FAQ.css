@@ -1,14 +1,6 @@
-/* imagen verde fondo */
-.img-verde-faq {
-  z-index: -1;
-  position: absolute;
-  right: -55%;
-  bottom: 0%;
-  opacity: 0.5;
-}
 .container-faq {
   padding-top: 10rem;
-  padding-bottom: 20rem;
+  padding-bottom: 10rem;
   text-align: left;
   margin: auto;
   color: var(--color-white);
@@ -29,8 +21,17 @@
   text-align: center;
   margin: 3rem 0;
   margin-top: 0;
-  font-size: 3rem;
+  font-size: 6vh;
   font-weight: bold;
+}
+.lista-preguntas-faq li {
+  cursor: pointer;
+  z-index: 3 !important;
+}
+.pregunta {
+  padding-left: 2rem;
+  font-size: 2.4vh;
+  z-index: 3 !important;
 }
 .parrafo-pregunta {
   overflow: hidden;
@@ -41,18 +42,7 @@
   opacity: 0;
   z-index: 3 !important;
   transition: max-height 0.3s ease-in-out, opacity 0.4s ease-in-out;
-}
-.lista-preguntas-faq li {
-  cursor: pointer;
-  z-index: 3 !important;
-}
-.pregunta {
-  padding-left: 2rem;
-  font-size: 1.5rem;
-  z-index: 3 !important;
-}
-.parrafo-pregunta {
-  font-size: 1.5rem;
+  font-size: 2.4vh;
 }
 .pregunta p {
   margin: 0;
@@ -80,22 +70,20 @@
 .lista-preguntas-faq img.rotated {
   transform: rotate(90deg);
 }
-@media (max-width: 1560px) {
-  .pregunta {
-    font-size: 1rem;
-  }
+
+@media (max-width: 800px) {
   .container-faq h1 {
-    font-size: 2.5rem;
+    font-size: 5vh;
+  }
+  .pregunta {
+    padding-left: 1rem;
+    font-size: 2vh;
   }
   .parrafo-pregunta {
-    font-size: 1rem;
+    overflow: hidden;
+    padding-left: 1rem;
+    font-size: 2vh;
   }
-  .container-faq {
-    padding-top: 5rem;
-    padding-bottom: 20rem;
-  }
-}
-@media (max-width: 800px) {
   .container-faq {
     width: 100%;
   }

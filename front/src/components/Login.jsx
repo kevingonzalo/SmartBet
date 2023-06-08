@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import mostrarPass from "./img/mostrarPass.png";
 import ocultarPass from "./img/ocultarPass.png";
 import "./styles/login-register.css";
-import "./styles/img-fondo.css";
 import ellipse from "./img/ellipse.webp";
 export default function Login({ URL, setUser, fetchUserProfile }) {
   const [email, setEmail] = useState("");
@@ -38,9 +37,8 @@ export default function Login({ URL, setUser, fetchUserProfile }) {
     axios
       .post(`${URL}/login`, formData)
       .then((response) => {
-        // Manejar la respuesta del servidor (por ejemplo, guardar el token)
-        const token = response.data.token;
-        localStorage.setItem("token", token);
+        const tokenlogin = response.data.tokenLogin;
+        localStorage.setItem("tokenlogin", tokenlogin);
         if (response.status === 220) {
           setErrorMessage("La Contraseña es Incorrecta");
         } else if (response.status === 200) {
@@ -116,7 +114,6 @@ export default function Login({ URL, setUser, fetchUserProfile }) {
         {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Muestra el mensaje de error si existe */}
         {successMessage && <p className="success-message">{successMessage}</p>}{" "}
         {/* Muestra el mensaje de éxito si existe */}
-        <br />
         <button type="submit" className="btn-form">
           Iniciar sesión
         </button>

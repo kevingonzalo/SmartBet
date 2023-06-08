@@ -1,26 +1,9 @@
-.img-verde-uno-contact {
-  position: absolute;
-  user-select: none;
-  bottom: 0%;
-  width: 450px;
-  height: 600px;
-  left: 6%;
-}
-.img-verde-dos-contact {
-  position: absolute;
-  user-select: none;
-  width: 400px;
-  bottom: 0%;
-  left: 65%;
-  z-index: 0;
-  opacity: 0.9;
-}
 .contacto {
   padding: 0;
   padding-bottom: 3rem;
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 80%;
   margin: auto;
   justify-content: space-around;
   position: relative;
@@ -31,7 +14,7 @@
   position: relative;
 }
 .img-bombilla {
-  width: 450px;
+  width: 40vh;
   z-index: 3;
   position: relative;
   z-index: 3 !important;
@@ -42,13 +25,13 @@
 }
 .right-contacto h1 {
   font-weight: bold;
-  font-size: 4rem;
+  font-size: 5.5vh;
   padding: 0.5rem;
   z-index: 3 !important;
 }
 .mail {
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 3.5vh;
   margin: auto;
   padding-bottom: 5rem;
   z-index: 3 !important;
@@ -64,19 +47,19 @@
   display: block;
 }
 .text-redes {
-  width: 80%;
+  width: 70%;
   margin: auto;
 }
 .img-right-contacto {
   background-color: var(--color-black);
-  border-radius: 40px;
+  border-radius: 5vh;
   padding: 25px 35px;
   width: max-content;
   margin: auto;
 }
 .img-right-contacto img {
   margin: 1rem;
-  width: 60px;
+  width: 6vh;
 }
 
 @media (max-width: 1560px) {

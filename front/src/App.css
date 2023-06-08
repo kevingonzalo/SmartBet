@@ -26,9 +26,11 @@ main {
   animation: aparecer 0.5s ease forwards;
   background-color: #fca5a5;
   color: #2e1e1e;
-  padding: 0.5rem 1rem;
   border-radius: 7px;
   font-weight: bold;
+  padding: 1vh 1rem;
+  margin: 1vh 0;
+  font-size: 2.4vh;
   text-align: center;
 }
 .success-message {
@@ -37,6 +39,7 @@ main {
   color: #133417;
   font-weight: bold;
   text-align: center;
-  padding: 0.5rem 1rem;
+  padding: 1vh 1rem;
+  font-size: 2.4vh;
   border-radius: 8px;
 }

@@ -1,9 +1,13 @@
 import express from "express";
 import cors from "cors";
-import register from "./register.js";
-import login from "./login.js";
-import perfil from "./perfil.js";
-import logout from "./logout.js";
+import register from "./rutas/register.js";
+import login from "./rutas/login.js";
+import perfil from "./rutas/perfil.js";
+import logout from "./rutas/logout.js";
+import recuperarPass from "./rutas/recuperarPass.js";
+import resetPassword from "./rutas/resetPassword.js";
+import deleteTokenPass from "./rutas/deteteTokenPass.js";
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -16,6 +20,12 @@ app.post("/login", login);
 app.get("/perfil", perfil);
 // Endpoint de logout
 app.delete("/logout", logout);
+// Endpoint de recuperar contraseña
+app.post("/recuperarPass", recuperarPass);
+// Endpoint de recuperar contraseña
+app.put("/resetpassword/:tokenPass", resetPassword);
+// Endpoint para eliminar tokenpass de la base de datos
+app.delete("/deleteTokenPass", deleteTokenPass);
 const PORT = 8000;
 app.listen(PORT, () => {
   console.log(`Servidor encendido en el puerto: ${PORT}`);

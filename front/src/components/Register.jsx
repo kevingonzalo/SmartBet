@@ -5,8 +5,6 @@ import mostrarPass from "./img/mostrarPass.png";
 import ocultarPass from "./img/ocultarPass.png";
 import ellipse from "./img/ellipse.webp";
 import "./styles/login-register.css";
-import "./styles/img-fondo.css";
-
 export default function Register({ URL }) {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -23,7 +21,7 @@ export default function Register({ URL }) {
     const timer = setTimeout(() => {
       setErrorMessage("");
       setSuccessMessage("");
-    }, 2000);
+    }, 3000);
 
     // Limpia el temporizador al desmontar el componente
     return () => clearTimeout(timer);
@@ -56,20 +54,8 @@ export default function Register({ URL }) {
           setTimeout(() => {
             navigate("/login");
           }, 2000);
-        } else if (response.status === 205) {
-          setErrorMessage("Las contraseñas no coinciden");
         } else if (response.status === 203) {
-          setErrorMessage("Ya Hay un Usuario Registrado con ese Correo!");
-        } else if (response.status === 200) {
-          setErrorMessage("El usuario ya existe");
-        } else if (response.status === 404) {
-          setErrorMessage("Error en la solicitud");
-        } else if (response.status === 201) {
-          setErrorMessage("¡La Contraseña Debe Contener almenos 8 Carateres!");
-        } else if (response.status === 202) {
-          setErrorMessage("¡La Contraseña Debe Contener 20 Carateres o Menos!");
-        } else if (response.status === 204) {
-          setErrorMessage(`¡El correo debe ser de tipo "ejemplo@gmail.com"!`);
+          setErrorMessage(response.data.message);
         }
       })
       .catch((error) => {
@@ -151,7 +137,6 @@ export default function Register({ URL }) {
             </label>
           </div>
         </div>
-        <br />
         {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Muestra el mensaje de error si existe */}
         {successMessage && <p className="success-message">{successMessage}</p>}{" "}
         {/* Muestra el mensaje de éxito si existe */}

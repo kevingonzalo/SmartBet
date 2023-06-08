@@ -17,13 +17,13 @@ export default function NavBarSesion({ URL }) {
   const handleLogout = async () => {
     try {
       // consigo el token de localStorage y lo meto en una variable para enviarlo al back
-      const token = localStorage.getItem("token");
+      const tokenLogin = localStorage.getItem("tokenlogin");
 
       // envia el token a eliminar a la base de datos
-      await axios.delete(`${URL}/logout`, { data: token });
+      await axios.delete(`${URL}/logout`, { data: tokenLogin });
 
       // elimina el token de inicio de sesion del localstorage
-      localStorage.removeItem("token");
+      localStorage.removeItem("tokenlogin");
 
       // redirige a la pagina de inicio
       window.location.href = "/";

@@ -24,13 +24,13 @@
 .form-login-register h1 {
   font-weight: bold;
   margin: 5vh 0;
-  margin-bottom: 1vh;
+  margin-bottom: 3vh;
   font-size: 4vh;
 }
 .form-login-register {
   background-color: black;
   min-width: 30%;
-  padding: 3vh;
+  padding: 5vh;
   border-radius: 30px;
 }
 .btn-form {
@@ -71,7 +71,7 @@
 /* inputs */
 .input {
   position: relative;
-  padding: 0.5vh;
+  padding: 0.7vh;
   width: 95%;
   margin: auto;
 }
@@ -95,31 +95,58 @@
   position: absolute;
   top: 50%;
   right: 3vh;
-  width: 2.5vh;
+  width: 2.3vh;
   transform: translateY(-50%);
   cursor: pointer;
 }
 .icon-mostar-pass:hover {
   color: #aaa;
 }
-
 /* register */
 .terminos-condiciones label {
   padding-left: 10px;
+  margin: 0.5rem 0;
+  margin-top: 0;
 }
 .terminos-condiciones input[type="checkbox"] {
   transform: scale(1.4);
   cursor: pointer;
 }
+/* recuperar y cambiar contraseña  */
+
+/* terminos y condicion  */
 /* responsive */
 @media (max-width: 1400px) {
   .terminos-condiciones input[type="checkbox"] {
     transform: scale(1);
   }
 }
+@media (max-width: 1150px) {
+  .form-login-register {
+    min-width: 40%;
+    padding: 5vh;
+    border-radius: 30px;
+  }
+}
+@media (max-width: 1000px) {
+  .form-login-register h1 {
+    font-size: 3.5vh;
+  }
+  .form-login-register {
+    min-width: 45%;
+    padding: 3vh;
+    border-radius: 30px;
+  }
+  .input {
+    width: 100%;
+  }
+}
 @media (max-width: 800px) {
   .form-login-register {
     width: 95%;
+  }
+  .input input {
+    font-size: 1.8vh;
   }
   .btn-form {
     font-size: 2vh;

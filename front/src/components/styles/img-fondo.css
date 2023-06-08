@@ -21,3 +21,110 @@
   bottom: 10%;
   left: 10%;
 }
+
+/* header */
+
+/* imagenes de fondo */
+.img {
+  position: absolute;
+  user-select: none;
+  z-index: 0;
+  filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.fondo-uno {
+  top: -10vh;
+  height: 400px;
+  z-index: -1;
+  width: 1000px;
+}
+.fondo-dos {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  bottom: 0%;
+  left: 65vw;
+  z-index: -1;
+  width: 600px;
+  user-select: none;
+}
+.fondo-tres {
+  bottom: 10%;
+  opacity: 0.8;
+  left: -10vw;
+  z-index: 0;
+  width: 400px;
+}
+
+/* funcion */
+/* imagenes verdes de fondo */
+.img-verde-uno {
+  position: absolute;
+  width: 100%;
+  left: -65%;
+  top: 0;
+  height: 800px;
+  z-index: -1;
+  opacity: 0.6;
+  user-select: none;
+  filter: blur(10px);
+}
+.img-verde-dos {
+  position: absolute;
+  user-select: none;
+  right: -65%;
+  bottom: -400%;
+  z-index: 0;
+}
+/* FAQ */
+.img-verde-faq {
+  z-index: -1;
+  position: absolute;
+  right: -55%;
+  bottom: 0%;
+  opacity: 0.5;
+}
+
+/* planes */
+/* imagenes verde  */
+.img-verde-planes-uno {
+  position: absolute;
+  left: -50%;
+  bottom: -10%;
+  opacity: 0.5;
+  z-index: -1;
+  user-select: none;
+}
+.img-verde-planes-dos {
+  position: absolute;
+  z-index: -1;
+  user-select: none;
+  opacity: 0.4;
+  left: 20%;
+  bottom: -50%;
+}
+.img-verde-planes-tres {
+  position: absolute;
+  user-select: none;
+  opacity: 0.4;
+  z-index: -1;
+  bottom: 10%;
+}
+
+/* contacto */
+.img-verde-uno-contact {
+  position: absolute;
+  user-select: none;
+  bottom: 0%;
+  width: 450px;
+  height: 600px;
+  left: 0%;
+}
+.img-verde-dos-contact {
+  position: absolute;
+  user-select: none;
+  width: 400px;
+  bottom: 0%;
+  left: 65%;
+  z-index: 0;
+  opacity: 0.9;
+}

@@ -4,7 +4,7 @@
   width: 100%;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 45%);
+  grid-template-columns: repeat(auto-fill, 40%);
   place-content: center;
   place-items: center;
   height: 100vh;
@@ -14,30 +14,28 @@
   z-index: 1;
   text-align: left;
   color: var(--color-white);
-  width: 100%;
-  margin-top: 5%;
+  width: 95%;
+  margin: auto;
 }
 .left h1 {
-  font-size: 4rem;
+  font-size: 7.2vh;
   font-weight: bold;
-  margin-bottom: 1rem;
 }
 .left h4 {
-  font-size: 1.7rem;
-  margin-bottom: 3rem;
+  font-size: 2.5vh;
+  margin-bottom: 5vh;
 }
 .left-button {
   cursor: pointer;
   z-index: 1;
   color: var(--color-black);
-  padding: 1rem 2.6rem;
-  border-radius: 50px;
-  margin-right: 3rem;
+  padding: 2vh 5.5vh;
+  border-radius: 5vh;
   box-shadow: var(--box-shadow-btn);
   border: none;
   text-decoration: none;
   box-shadow: var(--box-shadow-btn);
-  font-size: 1.6rem;
+  font-size: 2.5vh;
   background-color: var(--color-green);
   transition: box-shadow 0.3s;
 }
@@ -47,81 +45,18 @@
 
 .header-img {
   z-index: 1;
-  margin-left: 50px;
+  margin-left: 20vh;
   margin-top: 35%;
-  width: 500px;
+  width: 50vh;
 }
-/* imagenes de fondo */
-.img {
-  position: absolute;
-  user-select: none;
-  z-index: 0;
-  filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-.fondo-uno {
-  top: -10vh;
-  height: 400px;
-  z-index: -1;
-  width: 1000px;
-}
-.fondo-dos {
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  bottom: 0%;
-  left: 65vw;
-  z-index: -1;
-  width: 600px;
-  user-select: none;
-}
-.fondo-tres {
-  bottom: 10%;
-  opacity: 0.8;
-  left: -10vw;
-  z-index: 0;
-  width: 400px;
-}
-@media (max-width: 1560px) {
-  .left h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  .left h4 {
-    font-size: 1.3rem;
-    margin-bottom: 3rem;
-  }
-  .header a {
-    font-size: 1rem;
-  }
-  .header-img {
-    width: 350px;
-  }
-}
-@media (max-width: 1075px) {
-  .header {
-    gap: 0;
-  }
-  .left {
-    margin-top: 5%;
-  }
-  .left h4 {
-    font-size: 1.2rem;
-  }
-  .left h1 {
-    font-size: 2.8rem;
-  }
-  .header-img {
-    width: 320px;
-  }
-}
-@media (max-width: 700px) {
+
+@media (max-width: 800px) {
   .tres {
     bottom: 10%;
     left: -30vw;
   }
   .header {
-    padding-top: 76px;
+    padding-top: 20vh;
     display: flex;
     flex-direction: column;
     place-content: center;
