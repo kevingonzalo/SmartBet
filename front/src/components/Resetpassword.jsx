@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles/login-register.css";
 import ellipse from "./img/ellipse.webp";
+import { useNavigate } from "react-router-dom";
 const ResetPassword = ({ URL }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // Variable de estado para controlar el estado de carga
+
+  const navigate = useNavigate();
   useEffect(() => {
     // Establece un temporizador para limpiar los mensajes después de 3 segundos
     const timer = setTimeout(() => {
@@ -28,6 +32,10 @@ const ResetPassword = ({ URL }) => {
         return setErrorMessage(response.data.message);
       } else if (response.status === 200) {
         localStorage.removeItem("tokenPass");
+        setIsLoading(true);
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
         return setSuccessMessage(response.data.message);
       }
       setSuccessMessage(response.data.message);
@@ -42,6 +50,11 @@ const ResetPassword = ({ URL }) => {
     <div className="container-form">
       <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde uno" />
       <form onSubmit={handleSubmit} className="form-login-register">
+        {isLoading && (
+          <div className="spinner-border spinner" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        )}
         <h1>Restablecer Contraseña</h1>
         <div className="inputs">
           <div className="input">

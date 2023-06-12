@@ -5,7 +5,7 @@ import mostrarPass from "./img/mostrarPass.png";
 import ocultarPass from "./img/ocultarPass.png";
 import "./styles/login-register.css";
 import ellipse from "./img/ellipse.webp";
-export default function Login({ URL, setUser, fetchUserProfile }) {
+export default function Login({ URL, user, setUser, fetchUserProfile }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // Variable de estado para el mensaje de error

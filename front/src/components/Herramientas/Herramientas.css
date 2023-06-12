@@ -1,0 +1,99 @@
+/* estilos generales */
+.container-herramientas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+  width: 100%;
+}
+.content {
+  margin-top: 20vh;
+  margin-bottom: 5vh;
+  width: 100%;
+}
+.content h1 {
+  color: var(--color-white);
+  font-weight: bold;
+  font-size: 5vh;
+}
+
+/* guias */
+.guias {
+  width: 85%;
+  margin: auto;
+  margin-top: 5vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 19vw);
+  gap: 2vh;
+  place-content: center;
+  place-items: center;
+}
+.guia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 3vh;
+  background-color: #ffffff;
+  padding: 2vh;
+  height: 100%;
+  width: 95%;
+}
+.guia button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, rgb(70, 239, 121) 12.61%, rgb(25, 211, 43) 112.61%);
+  box-shadow: rgba(70, 239, 121, 0.6) 0px 0px 15px;
+  border-radius: 5vh;
+  width: 90%;
+  margin: 1vh;
+  padding: 2vh;
+  font-weight: bold;
+  border: none;
+  text-decoration: none;
+  font-size: 2.3vh;
+
+  transition: box-shadow 0.3s;
+}
+.guia button {
+  box-shadow: var(--box-shadow-btn-hover);
+}
+.guia img {
+  width: 18vh;
+  margin: 3vh auto;
+}
+.guia p {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  height: 4vh;
+  font-size: 2.5vh;
+}
+
+@media (max-width: 1250px) {
+  .guias {
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, 300px);
+  }
+}
+@media (max-width: 600px) {
+  .content {
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+  }
+  .content h1 {
+    font-size: 4vh;
+  }
+  .guias {
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, 90%);
+  }
+}
+
+/* bonos */
+/* herramientas */
+/* premium */
+/* perfil */

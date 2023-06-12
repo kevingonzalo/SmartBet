@@ -24,7 +24,6 @@ export default function Recuperarpass({ URL }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(localStorage.getItem("tokenPass"));
     const tokenPass = localStorage.getItem("tokenPass");
     if (tokenPass !== null && tokenPass !== undefined) {
       return setErrorMessage("Ya se ha enviado un correo de recuperación anteriormente");

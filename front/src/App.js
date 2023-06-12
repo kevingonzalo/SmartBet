@@ -7,12 +7,19 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Perfil from "./components/Perfil";
 import axios from "axios";
-import Pagar from "./components/Pagar";
 import Recuperarpass from "./components/Recuperarpass";
 import Resetpassword from "./components/Resetpassword";
+
+// herramientas de usuario
+import Guias from "./components/Herramientas/Guias";
+import Bonos from "./components/Herramientas/Bonos";
+import Herramientas from "./components/Herramientas/Herramientas";
+import Premium from "./components/Herramientas/Premium";
+import Perfil from "./components/Herramientas/Perfil";
+
 const URL = process.env.REACT_APP_URL || "http://localhost:8000";
+
 function App() {
   // verifica si hay un inicio de sesion en la web
   const [user, setUser] = useState(null);
@@ -53,12 +60,19 @@ function App() {
         <NavBar user={user} URL={URL} />
         <Routes>
           <Route path="/" element={<Home user={user} />} />
-          <Route path="/register" element={<Register URL={URL} />} />
-          <Route path="/login" element={<Login URL={URL} setUser={setUser} fetchUserProfile={fetchUserProfile} />} />
-          <Route path="/perfil" element={<Perfil URL={URL} user={user} />} />
-          <Route path="/pagar" element={<Pagar URL={URL} user={user} />} />
+          <Route path="/register" element={<Register URL={URL} user={user} />} />
+          <Route
+            path="/login"
+            element={<Login URL={URL} setUser={setUser} user={user} fetchUserProfile={fetchUserProfile} />}
+          />
           <Route path="/recuperar-contraseña" element={<Recuperarpass URL={URL} />} />
           <Route path="/resetpassword" element={<Resetpassword URL={URL} />} />
+          {/* herramientas de usuario (menu para cuando el usuario inicie sesión) */}
+          <Route path="/guias" element={<Guias />} />
+          <Route path="/bonos" element={<Bonos />} />
+          <Route path="/herramientas" element={<Herramientas />} />
+          <Route path="/Premium" element={<Premium />} />
+          <Route path="/perfil" element={<Perfil URL={URL} user={user} />} />
         </Routes>
       </HashRouter>
     </div>

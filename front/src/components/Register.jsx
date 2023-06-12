@@ -5,7 +5,7 @@ import mostrarPass from "./img/mostrarPass.png";
 import ocultarPass from "./img/ocultarPass.png";
 import ellipse from "./img/ellipse.webp";
 import "./styles/login-register.css";
-export default function Register({ URL }) {
+export default function Register({ URL, user }) {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
