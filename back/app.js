@@ -6,8 +6,6 @@ import perfil from "./rutas/perfil.js";
 import logout from "./rutas/logout.js";
 import recuperarPass from "./rutas/recuperarPass.js";
 import resetPassword from "./rutas/resetPassword.js";
-import deleteTokenPass from "./rutas/deteteTokenPass.js";
-
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -24,8 +22,6 @@ app.delete("/logout", logout);
 app.post("/recuperarPass", recuperarPass);
 // Endpoint de recuperar contraseña
 app.put("/resetpassword/:tokenPass", resetPassword);
-// Endpoint para eliminar tokenpass de la base de datos
-app.delete("/deleteTokenPass", deleteTokenPass);
 const PORT = 8000;
 app.listen(PORT, () => {
   console.log(`Servidor encendido en el puerto: ${PORT}`);

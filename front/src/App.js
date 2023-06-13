@@ -15,6 +15,9 @@ import Resetpassword from "./components/Resetpassword";
 import Guias from "./components/Herramientas/Guias";
 import Bonos from "./components/Herramientas/Bonos";
 import Herramientas from "./components/Herramientas/Herramientas";
+import Calculadora from "./components/Herramientas/Calculadora";
+import OddsmatcherGratis from "./components/Herramientas/OddsmatcherGratis";
+import OddsmatcherPremium from "./components/Herramientas/OddsmatcherPremium";
 import Premium from "./components/Herramientas/Premium";
 import Perfil from "./components/Herramientas/Perfil";
 
@@ -69,8 +72,14 @@ function App() {
           <Route path="/resetpassword" element={<Resetpassword URL={URL} />} />
           {/* herramientas de usuario (menu para cuando el usuario inicie sesión) */}
           <Route path="/guias" element={<Guias />} />
+          {/* ///// */}
           <Route path="/bonos" element={<Bonos />} />
+          {/* ///// */}
           <Route path="/herramientas" element={<Herramientas />} />
+          <Route path="/calculadora" element={<Calculadora />} />
+          <Route path="/Oddsmatcher-gratuito" element={<OddsmatcherGratis />} />
+          <Route path="/OddsmatcherPremium" element={<OddsmatcherPremium />} />
+          {/* //// */}
           <Route path="/Premium" element={<Premium />} />
           <Route path="/perfil" element={<Perfil URL={URL} user={user} />} />
         </Routes>
