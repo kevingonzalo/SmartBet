@@ -1,7 +1,7 @@
 import "./App.css";
 import "./components/styles/variables.css";
 import "./components/styles/img-fondo.css";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
@@ -20,18 +20,20 @@ import OddsmatcherGratis from "./components/Herramientas/OddsmatcherGratis";
 import OddsmatcherPremium from "./components/Herramientas/OddsmatcherPremium";
 import Premium from "./components/Herramientas/Premium";
 import Perfil from "./components/Herramientas/Perfil";
-
 const URL = process.env.REACT_APP_URL || "http://localhost:8000";
 
 function App() {
   // verifica si hay un inicio de sesion en la web
+  const [isCheckingUser, setIsCheckingUser] = useState(true);
   const [user, setUser] = useState(null);
+
   const fetchUserProfile = async () => {
     try {
       const tokenlogin = localStorage.getItem("tokenlogin");
       if (!tokenlogin) {
         // No hay token, no se hace la petición y se establece el usuario como null
         setUser(null);
+        setIsCheckingUser(false); // Finaliza la verificación del usuario
         return;
       }
 
@@ -42,7 +44,10 @@ function App() {
         },
       });
       // Almacenar los datos del usuario en el estado
-      setUser(response.data.user);
+      setTimeout(() => {
+        setIsCheckingUser(false); // Finaliza la verificación del usuario
+        setUser(response.data.user);
+      }, 1500);
     } catch (error) {
       if (error.response && error.response.status === 205) {
         // El token es inválido o ha expirado, se establece el usuario como null
@@ -51,11 +56,26 @@ function App() {
         console.log(error);
         // Manejar otros errores de la petición
       }
+      setTimeout(() => {
+        setIsCheckingUser(false); // Finaliza la verificación del usuario
+      }, 1500);
     }
   };
+
   useEffect(() => {
     fetchUserProfile();
-  }, [user]);
+  }, []);
+
+  if (isCheckingUser) {
+    return (
+      <div className="spinner-container">
+        <div className="spinner-border spinner" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+        <p className="spinner-text">Cargando Contenido...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="App">
@@ -63,25 +83,36 @@ function App() {
         <NavBar user={user} URL={URL} />
         <Routes>
           <Route path="/" element={<Home user={user} />} />
-          <Route path="/register" element={<Register URL={URL} user={user} />} />
-          <Route
-            path="/login"
-            element={<Login URL={URL} setUser={setUser} user={user} fetchUserProfile={fetchUserProfile} />}
-          />
-          <Route path="/recuperar-contraseña" element={<Recuperarpass URL={URL} />} />
-          <Route path="/resetpassword" element={<Resetpassword URL={URL} />} />
-          {/* herramientas de usuario (menu para cuando el usuario inicie sesión) */}
-          <Route path="/guias" element={<Guias />} />
-          {/* ///// */}
-          <Route path="/bonos" element={<Bonos />} />
-          {/* ///// */}
-          <Route path="/herramientas" element={<Herramientas />} />
-          <Route path="/calculadora" element={<Calculadora />} />
-          <Route path="/Oddsmatcher-gratuito" element={<OddsmatcherGratis />} />
-          <Route path="/OddsmatcherPremium" element={<OddsmatcherPremium />} />
-          {/* //// */}
-          <Route path="/Premium" element={<Premium />} />
-          <Route path="/perfil" element={<Perfil URL={URL} user={user} />} />
+          {user ? (
+            <>
+              <Route path="/register" element={<Navigate to="/" />} />
+              <Route path="/login" element={<Navigate to="/" />} />
+              <Route path="/recuperar-contraseña" element={<Navigate to="/" />} />
+              <Route path="/resetpassword" element={<Navigate to="/" />} />
+
+              <Route path="/guias" element={<Guias />} />
+              {/* ///// */}
+              <Route path="/bonos" element={<Bonos />} />
+              {/* ///// */}
+              <Route path="/herramientas" element={<Herramientas />} />
+              <Route path="/calculadora" element={<Calculadora />} />
+              <Route path="/Oddsmatcher-gratuito" element={<OddsmatcherGratis />} />
+              <Route path="/OddsmatcherPremium" element={<OddsmatcherPremium />} />
+              {/* //// */}
+              <Route path="/Premium" element={<Premium />} />
+              <Route path="/perfil" element={<Perfil URL={URL} user={user} />} />
+            </>
+          ) : (
+            <>
+              <Route path="/register" element={<Register URL={URL} user={user} />} />
+              <Route
+                path="/login"
+                element={<Login URL={URL} setUser={setUser} user={user} fetchUserProfile={fetchUserProfile} />}
+              />
+              <Route path="/recuperar-contraseña" element={<Recuperarpass URL={URL} />} />
+              <Route path="/resetpassword" element={<Resetpassword URL={URL} />} />
+            </>
+          )}
         </Routes>
       </HashRouter>
     </div>

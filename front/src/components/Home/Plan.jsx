@@ -48,11 +48,7 @@ export default function Plan({
         </p>
       </div>
 
-      {user ? (
-        <button onClick={handleLinkPagar}>Comprar Plan</button>
-      ) : (
-        <button onClick={handleLinkLogin}>{textButton}</button>
-      )}
+      {user ? <button>Plan Obtenido</button> : <button onClick={handleLinkLogin}>{textButton}</button>}
     </li>
   );
 }

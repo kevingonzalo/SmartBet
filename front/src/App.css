@@ -43,3 +43,18 @@ main {
   font-size: 2.4vh;
   border-radius: 8px;
 }
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+.spinner {
+  color: white;
+}
+.spinner-text {
+  text-align: center;
+  color: white;
+}

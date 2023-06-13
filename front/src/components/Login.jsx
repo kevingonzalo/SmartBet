@@ -44,13 +44,13 @@ export default function Login({ URL, user, setUser, fetchUserProfile }) {
         } else if (response.status === 200) {
           setIsLoading(true);
           // setea el user y lo pone en true para saber que el usuario inicio sesion
-          setUser(true);
           // carga la informacion del perfil en user
           fetchUserProfile();
           setSuccessMessage("Inicio de sesión exitoso");
           setTimeout(() => {
             navigate("/");
-          }, 2000);
+            setUser(true);
+          }, 3000);
         } else if (response.status === 229) {
           setErrorMessage("El Usuario con ese Email no Existe!");
         }
