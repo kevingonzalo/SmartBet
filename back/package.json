@@ -20,6 +20,7 @@
     "mysql2": "^3.3.2",
     "nodemailer": "^6.9.3",
     "nodemailer-smtp-transport": "^2.7.4",
+    "puppeteer": "^20.7.1",
     "retry": "^0.13.1"
   }
 }

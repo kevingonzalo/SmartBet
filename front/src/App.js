@@ -96,7 +96,7 @@ function App() {
               {/* ///// */}
               <Route path="/herramientas" element={<Herramientas />} />
               <Route path="/calculadora" element={<Calculadora />} />
-              <Route path="/Oddsmatcher-gratuito" element={<OddsmatcherGratis />} />
+              <Route path="/Oddsmatcher-gratuito" element={<OddsmatcherGratis URL={URL} />} />
               <Route path="/OddsmatcherPremium" element={<OddsmatcherPremium />} />
               {/* //// */}
               <Route path="/Premium" element={<Premium />} />

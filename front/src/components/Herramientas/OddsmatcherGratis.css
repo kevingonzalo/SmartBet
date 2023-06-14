@@ -1,0 +1,21 @@
+#sbet_filters {
+  width: 100%;
+  display: none;
+  color: var(--color-white);
+}
+/* tablas */
+#sbet_table_container {
+  color: var(--color-white);
+}
+#sbet_table {
+  width: 90%;
+  margin: auto;
+}
+/* imagen svg pelota */
+.sbet_match {
+  width: 50px;
+}
+/* imagenes de apuestas */
+.bookie img {
+  width: 200px;
+}
