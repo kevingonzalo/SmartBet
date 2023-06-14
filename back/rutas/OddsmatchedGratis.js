@@ -2,17 +2,20 @@ import puppeteer from "puppeteer";
 import dotenv from "dotenv";
 
 dotenv.config();
+const urlScraping = process.env.URL_SCRAPING;
+const email = process.env.EMAIL;
+const password = process.env.PASS;
 const oddsmatcherGratis = async (req, res) => {
   try {
     const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
 
     // Navegar a la página de inicio de sesión
-    await page.goto(`${process.env.URL_LOGIN}/login/`);
+    await page.goto(`${urlScraping}/login/`);
 
     // Rellenar los campos de inicio de sesión
-    await page.type("#user_login", process.env.EMAIL);
-    await page.type("#user_pass", process.env.PASS);
+    await page.type("#user_login", email);
+    await page.type("#user_pass", password);
 
     // Enviar el formulario de inicio de sesión
     await Promise.all([
@@ -21,7 +24,7 @@ const oddsmatcherGratis = async (req, res) => {
     ]);
 
     // Realizar la solicitud GET a la página web deseada
-    await page.goto(`${URL_SCRAPING}/oddsmatcher-gratuito-2/`);
+    await page.goto(`${urlScraping}/oddsmatcher-gratuito-2/`);
 
     // Esperar a que el elemento #sbet_widget esté presente en la página
     await page.waitForSelector("#sbet_widget");
