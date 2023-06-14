@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "smartbet804@gmail.com",
-    pass: process.env.PASS_EMAIL,
+    pass: "krfbujvnilschgog",
   },
 });
 
@@ -34,7 +34,7 @@ const recuperarPass = (req, res) => {
     const tokenPass = jwt.sign({ email }, process.env.SECRET_KEY, { expiresIn: "1h" });
 
     // Enviar el correo electrónico al usuario con el enlace para restablecer la contraseña
-    const resetLink = `${process.env.URL}#/resetpassword?token=${tokenPass}`;
+    const resetLink = `http://smartbet.surge.sh/#/resetpassword?token=${tokenPass}`;
     // const resetLink = `http://localhost:3000/#/resetpassword?token=${tokenPass}`;
     const correoOptions = {
       from: "SmartBet <no-reply@smartbet.com>",

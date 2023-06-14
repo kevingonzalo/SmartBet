@@ -11,11 +11,11 @@ const oddsmatcherGratis = async (req, res) => {
     const page = await browser.newPage();
 
     // Navegar a la página de inicio de sesión
-    await page.goto(`${urlScraping}/login/`);
+    await page.goto(`https://amigosdelmatchedbetting.com/login/`);
 
     // Rellenar los campos de inicio de sesión
-    await page.type("#user_login", email);
-    await page.type("#user_pass", password);
+    await page.type("#user_login", "smartbet804@gmail.com");
+    await page.type("#user_pass", "smartbet123");
 
     // Enviar el formulario de inicio de sesión
     await Promise.all([
@@ -24,7 +24,7 @@ const oddsmatcherGratis = async (req, res) => {
     ]);
 
     // Realizar la solicitud GET a la página web deseada
-    await page.goto(`${urlScraping}/oddsmatcher-gratuito-2/`);
+    await page.goto(`https://amigosdelmatchedbetting.com/oddsmatcher-gratuito-2/`);
 
     // Esperar a que el elemento #sbet_widget esté presente en la página
     await page.waitForSelector("#sbet_widget");
