@@ -5,7 +5,7 @@ import conexion from "../connect/conexion.js";
 
 dotenv.config();
 
-const secretKey = "dsadDSDA13sdsSD131!1cbn!!sdsd";
+const secretKey = process.env.SECRET_KEY;
 
 const login = (req, res) => {
   const { email, password } = req.body;

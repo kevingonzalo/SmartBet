@@ -1,21 +1,61 @@
 #sbet_filters {
   width: 100%;
-  display: none;
-  color: var(--color-white);
+  color: #808088;
 }
+#sbet_pagination,
+.sbet_filter,
+.sbet_button {
+  display: none;
+}
+
 /* tablas */
 #sbet_table_container {
-  color: var(--color-white);
-}
-#sbet_table {
+  color: #808088;
   width: 90%;
   margin: auto;
+  background-color: var(--color-white);
 }
+.sbet_header {
+  color: #3f3f3f;
+  font-weight: bold;
+}
+#sbet_table {
+  width: 100%;
+  margin: auto;
+}
+td {
+  padding: 1rem;
+  border-bottom: 0.5px solid #808088;
+}
+
 /* imagen svg pelota */
 .sbet_match {
-  width: 50px;
+  display: flex;
+  width: max-content;
+  gap: 3vh;
+  text-align: left;
+}
+.sbet_match svg {
+  width: 30px;
 }
 /* imagenes de apuestas */
 .bookie img {
-  width: 200px;
+  width: 90px;
+  margin: auto;
+}
+.bookmaker {
+  width: 10%;
+  background-color: red;
+}
+.back,
+.back-head {
+  background: #a6d8ff !important;
+  font-weight: bold;
+  color: #3f3f3f;
+}
+.lay,
+.lay-head {
+  color: #3f3f3f;
+  background: #fac9d1 !important;
+  font-weight: bold;
 }

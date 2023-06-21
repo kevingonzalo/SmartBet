@@ -9,7 +9,7 @@ const perfil = (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
   try {
     // Verificar y decodificar el token
-    const decodedToken = jwt.verify(token, "dsadDSDA13sdsSD131!1cbn!!sdsd");
+    const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
 
     // Obtener el userId del token decodificado
     const userId = decodedToken.userId;
