@@ -14,13 +14,13 @@ import Resetpassword from "./components/Resetpassword";
 // herramientas de usuario
 import Guias from "./components/Herramientas/Guias";
 import Bonos from "./components/Herramientas/Bonos";
-import Herramientas from "./components/Herramientas/Herramientas";
-import Calculadora from "./components/Herramientas/Calculadora";
+import CalculadoraMatchedBetting from "./components/Herramientas/CalculadoraMatchedBetting";
 import OddsmatcherGratis from "./components/Herramientas/OddsmatcherGratis";
 import OddsmatcherPremium from "./components/Herramientas/OddsmatcherPremium";
 import Premium from "./components/Herramientas/Premium";
 import Perfil from "./components/Herramientas/Perfil";
-const URL = process.env.REACT_APP_URL || "http://localhost:8000";
+// url para las peticiones al back
+const URL = "http://192.168.0.22:8000" || process.env.REACT_APP_URL;
 
 function App() {
   // verifica si hay un inicio de sesion en la web
@@ -94,8 +94,7 @@ function App() {
               {/* ///// */}
               <Route path="/bonos" element={<Bonos />} />
               {/* ///// */}
-              <Route path="/herramientas" element={<Herramientas />} />
-              <Route path="/calculadora" element={<Calculadora />} />
+              <Route path="/CalculadoraMatchedBetting" element={<CalculadoraMatchedBetting />} />
               <Route path="/Oddsmatcher-gratuito" element={<OddsmatcherGratis URL={URL} />} />
               <Route path="/OddsmatcherPremium" element={<OddsmatcherPremium />} />
               {/* //// */}

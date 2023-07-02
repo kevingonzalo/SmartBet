@@ -7,7 +7,11 @@ const email = process.env.EMAIL;
 const password = process.env.PASS;
 const oddsmatcherGratis = async (req, res) => {
   try {
-    const browser = await puppeteer.launch({ headless: "new" });
+    const browser = await puppeteer.launch({
+      headless: "new",
+      // colocar la ruta del google chrome (la herramienta "puppeteer" requiere de chrome para ser usado)
+      executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    });
     const page = await browser.newPage();
 
     // Navegar a la página de inicio de sesión

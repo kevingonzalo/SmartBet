@@ -1,6 +1,14 @@
 import bcrypt from "bcrypt";
 import connection from "../connect/connection.js";
-
+import nodemailer from "nodemailer";
+// Configuración del servicio de correo electrónico
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "smartbet804@gmail.com",
+    pass: process.env.PASS_EMAIL,
+  },
+});
 const register = async (req, res) => {
   console.log(req.body);
   const { email, userName, password, repeatPassword } = req.body;
@@ -39,6 +47,35 @@ const register = async (req, res) => {
 
         connection(insertQuery)
           .then((results) => {
+            const correoOptions = {
+              from: "SmartBet <no-reply@smartbet.com>",
+              to: email,
+              subject: "¡Bienvenido a SmartBet!",
+              text: `Hola ${userName},
+          
+              ¡Bienvenido a SmartBet! Nos alegra que te hayas registrado en nuestra página y te damos una cálida bienvenida a nuestra comunidad de apuestas deportivas en línea.
+              
+              Si tienes alguna pregunta o necesitas ayuda, nuestro equipo de soporte estará encantado de ayudarte en cualquier momento. Puedes ponerte en contacto con nosotros a través de smartbet804@gmail.com.
+              
+              Esperamos que disfrutes de tu tiempo en SmartBet y te deseamos mucha suerte en tus apuestas.
+              
+              Saludos cordiales,
+              
+              Equipo de SmartBet.
+              `,
+            };
+
+            transporter.sendMail(correoOptions, (error, info) => {
+              if (error) {
+                console.log(error);
+                return res.status(500).json({ error: "Error al enviar el correo electrónico" });
+              }
+              console.log("Correo electrónico enviado:", info.response);
+
+              return res.status(200).json({
+                message: `Correo electrónico enviado correctamente!`,
+              });
+            });
             res.status(200).json({ message: "el usuario se registro con exito!" });
           })
           .catch((err) => {

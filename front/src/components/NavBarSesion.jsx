@@ -4,12 +4,18 @@ import { useState } from "react";
 import axios from "axios";
 export default function NavBarSesion({ URL }) {
   const [menuResponsive, setMenuResponsive] = useState(false);
-
+  const [menuAbierto, setMenuAbierto] = useState(false);
+  const [menuCalculadoraAbierto, setMenuCalculadoraAbierto] = useState(false);
   // activa y desactiva el menu de responsive
   const handleButtonResponsive = () => {
     setMenuResponsive(!menuResponsive);
   };
-
+  const handleMenuAbierto = () => {
+    setMenuAbierto(!menuAbierto);
+  };
+  const handleMenuAbiertoCalc = () => {
+    setMenuCalculadoraAbierto(!menuCalculadoraAbierto);
+  };
   // pone en false y deshabilita el menu de responsive
   const handleButtonHome = () => {
     setMenuResponsive(false);
@@ -53,11 +59,60 @@ export default function NavBarSesion({ URL }) {
               Bonos
             </Link>
           </li>
-          <li>
-            <Link to="/herramientas" className="link" onClick={handleButtonResponsive}>
-              Herramientas
+          <li className="menu-herramientas" onMouseEnter={() => setMenuAbierto(true)} onMouseLeave={() => setMenuAbierto(false)}>
+            <Link className="link" onClick={handleMenuAbierto}>
+              Herramientas <i className="fas fa-angle-down"></i>
             </Link>
+            {menuAbierto && (
+              <ul className="menu-desplegable">
+                <li onMouseEnter={() => setMenuCalculadoraAbierto(true)} onMouseLeave={() => setMenuCalculadoraAbierto(false)}>
+                  <Link className="link" onClick={handleMenuAbiertoCalc}>
+                    Calculadora <i className="fas fa-angle-down"></i>
+                  </Link>
+                  {menuCalculadoraAbierto && (
+                    <ul className="menu-desplegable-calc">
+                      <li>
+                        <Link className="link" to="/CalculadoraMatchedBetting" onClick={handleButtonResponsive}>
+                          Calc. de matched betting
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="link" onClick={handleButtonResponsive}>
+                          Calc. de arbitraje
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="link" onClick={handleButtonResponsive}>
+                          Calc. de arbitraje de 3 opciones
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="link" onClick={handleButtonResponsive}>
+                          Calc. secuencial
+                        </Link>
+                      </li>
+                    </ul>
+                  )}
+                </li>
+                <li>
+                  <Link className="link" to="/Oddsmatcher-gratuito" onClick={handleButtonResponsive}>
+                    Oddsmatcher gratuito
+                  </Link>
+                </li>
+                <li>
+                  <Link className="link" to="/OddsmatcherPremium" onClick={handleButtonResponsive}>
+                    Oddsmatcher premium
+                  </Link>
+                </li>
+                <li>
+                  <Link className="link" to="/dutcher" onClick={handleButtonResponsive}>
+                    Dutcher
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
+
           <li>
             <Link to="/Premium" className="link" onClick={handleButtonResponsive}>
               Premium
