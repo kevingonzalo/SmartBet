@@ -94,9 +94,9 @@ function App() {
               {/* ///// */}
               <Route path="/bonos" element={<Bonos />} />
               {/* ///// */}
-              <Route path="/CalculadoraMatchedBetting" element={<CalculadoraMatchedBetting />} />
+              <Route path="/CalculadoraMatchedBetting" element={<CalculadoraMatchedBetting URL={URL} />} />
               <Route path="/Oddsmatcher-gratuito" element={<OddsmatcherGratis URL={URL} />} />
-              <Route path="/OddsmatcherPremium" element={<OddsmatcherPremium />} />
+              <Route path="/Oddsmatcher-Premium" element={<OddsmatcherPremium URL={URL} />} />
               {/* //// */}
               <Route path="/Premium" element={<Premium />} />
               <Route path="/perfil" element={<Perfil URL={URL} user={user} />} />

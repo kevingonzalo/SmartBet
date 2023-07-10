@@ -7,6 +7,8 @@ import logout from "./rutas/logout.js";
 import recuperarPass from "./rutas/recuperarPass.js";
 import resetPassword from "./rutas/resetPassword.js";
 import oddsmatcherGratis from "./rutas/OddsmatchedGratis.js";
+import OddsmatcherPremium from "./rutas/OddsmatcherPremium.js";
+import ScrapingGratis from "./rutas/ScrapingGratis.js";
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -23,9 +25,12 @@ app.delete("/logout", logout);
 app.post("/recuperarPass", recuperarPass);
 // Endpoint de recuperar contraseña
 app.put("/resetpassword/:tokenPass", resetPassword);
-// Endpoint para cargar
+// Endpoint para cargar oddsmatcherGratis
 app.get("/oddsmatcherGratis", oddsmatcherGratis);
-
+// Endpoint para cargar OddsmatcherPremium
+app.get("/OddsmatcherPremium", OddsmatcherPremium);
+// hago scraping de los datos de la pagina web cada 1 hora
+ScrapingGratis();
 const PORT = 8000;
 app.listen(PORT, () => {
   console.log(`Servidor encendido en el puerto: ${PORT}`);

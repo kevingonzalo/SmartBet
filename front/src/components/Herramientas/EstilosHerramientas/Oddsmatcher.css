@@ -11,7 +11,7 @@
 /* tablas */
 #sbet_table_container {
   color: #808088;
-  width: 90%;
+  width: 100%;
   margin: auto;
   background-color: var(--color-white);
 }
@@ -45,7 +45,7 @@ td {
 }
 .bookmaker {
   width: 10%;
-  background-color: red;
+  background-color: rgb(33, 31, 31);
 }
 .back,
 .back-head {

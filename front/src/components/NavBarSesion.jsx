@@ -100,7 +100,7 @@ export default function NavBarSesion({ URL }) {
                   </Link>
                 </li>
                 <li>
-                  <Link className="link" to="/OddsmatcherPremium" onClick={handleButtonResponsive}>
+                  <Link className="link" to="/Oddsmatcher-Premium" onClick={handleButtonResponsive}>
                     Oddsmatcher premium
                   </Link>
                 </li>

@@ -1,4 +1,4 @@
-import "./Herramientas.css";
+import "./EstilosHerramientas/Herramientas.css";
 const Perfil = ({ user }) => {
   return (
     <div className="perfil">

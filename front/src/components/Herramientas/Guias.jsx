@@ -3,7 +3,7 @@ import img2 from "../img/img-herramientas-usuario/img2.png";
 import img3 from "../img/img-herramientas-usuario/img3.png";
 import img4 from "../img/img-herramientas-usuario/img4.png";
 import ellipse from "../img/ellipse.webp";
-import "./Herramientas.css";
+import "./EstilosHerramientas/Herramientas.css";
 export default function Guias() {
   return (
     <section className="container-herramientas">

@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./OddsmatcherGratis.css";
+import "./EstilosHerramientas/Oddsmatcher.css";
 import ellipse from "../img/ellipse.webp";
 
 export default function OddsmatcherGratis({ URL }) {
   const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Variable de estado para controlar el estado de carga
-
+  // Variable de estado para controlar el estado de carga
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${URL}/oddsmatcherGratis`);
         setData(response.data);
-        setIsLoading(false); // Cambiar el estado de carga a falso una vez que se ha cargado la data
+        // Cambiar el estado de carga a falso una vez que se ha cargado la data
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
