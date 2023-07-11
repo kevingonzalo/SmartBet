@@ -40,6 +40,7 @@ const ScrapingGratis = async () => {
 
     // Obtener el valor máximo de páginas desde el span con id "sbet_total_pages"
     const totalPages = await page.$eval("#sbet_total_pages", (element) => parseInt(element.textContent));
+    console.log("Paginas gratis Cargadas" + totalPages);
     // Crear un array para almacenar los valores de las tablas
     const fechas = [];
     const partido = [];
@@ -81,6 +82,10 @@ const ScrapingGratis = async () => {
       contra.push(...contraElements);
       liquidez.push(...liquidezElements);
       actualizado.push(...actualizadoElements);
+      // Navegar a la siguiente página (excepto en la última iteración)
+      if (pageNumber !== totalPages) {
+        await page.click("#sbet_next_page"); // Hacer clic en el botón de "Siguiente página"
+      }
     }
     for (let i = 0; i < fechas.length; i++) {
       const dato = {
@@ -94,6 +99,7 @@ const ScrapingGratis = async () => {
         contra: contra[i],
         liquidez: liquidez[i],
         actualizado: actualizado[i],
+        totalPages: totalPages,
       };
       datos.push(dato);
     }
@@ -126,12 +132,12 @@ const ScrapingGratis = async () => {
 
       // Insertar los datos del scraping en la base de datos
       const insertQuery =
-        "INSERT INTO gratis (Fecha, Partido, Competicion, Apuesta, Rating, Casa, Afavor, Contra, Liquidez, Actualizado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO gratis (Fecha, Partido, Competicion, Apuesta, Rating, Casa, Afavor, Contra, Liquidez, Actualizado,totalPages) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
       await Promise.all(
         datos.map((dato) => {
-          const { fecha, partido, competicion, apuesta, rating, casa, afavor, contra, liquidez, actualizado } = dato;
-          const values = [fecha, partido, competicion, apuesta, rating, casa, afavor, contra, liquidez, actualizado];
+          const { fecha, partido, competicion, apuesta, rating, casa, afavor, contra, liquidez, actualizado, totalPages } = dato;
+          const values = [fecha, partido, competicion, apuesta, rating, casa, afavor, contra, liquidez, actualizado, totalPages];
 
           return new Promise((resolve, reject) => {
             conexion.query(insertQuery, values, (error, results) => {
@@ -152,7 +158,7 @@ const ScrapingGratis = async () => {
   } catch (error) {
     console.error("Error durante el scraping y guardado de datos:", error);
   }
-  console.log("Fin");
+  console.log("Fin gratis");
 };
 
 // Configurar temporizador para ejecutar la función cada hora (3600000 ms)

@@ -1,38 +1,56 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./EstilosHerramientas/Oddsmatcher.css";
 import ellipse from "../img/ellipse.webp";
-import { Link } from "react-router-dom";
 
 export default function OddsmatcherPremium({ URL }) {
   const [data, setData] = useState([]);
-  const [premium, setPremium] = useState(true);
-  const [change, setChange] = useState(false);
-
-  // Variable de estado para controlar el estado de carga
   const [isLoading, setIsLoading] = useState(true);
+  const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const elementsPerPage = 30;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${URL}/OddsmatcherPremium`);
-        setData(response.data);
-        setIsLoading(false); // Cambiar el estado de carga a falso una vez que se ha cargado la data
+        const datos = response.data.datos;
+        console.log(datos);
+        setTotalPages(datos[0].totalPages);
+        setIsLoading(false);
+        setData(datos);
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchData();
-  }, [change]);
-  const handleAdelanteClick = async () => {
-    try {
-      await axios.post(`${URL}/PasarPagina`);
-      setChange(!change);
-    } catch (error) {
-      console.error(error);
-    }
+  }, []);
+
+  const handlePreviousPage = () => {
+    setCurrentPage((prevPage) => {
+      if (prevPage === 1) {
+        return 1;
+      } else {
+        return prevPage - 1;
+      }
+    });
   };
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => {
+      if (prevPage === totalPages) {
+        return totalPages;
+      } else {
+        return prevPage + 1;
+      }
+    });
+  };
+
+  const handleClearFilters = () => {
+    console.log(3);
+  };
+
   return (
     <div className="container-herramientas">
       <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde uno" />
@@ -45,23 +63,56 @@ export default function OddsmatcherPremium({ URL }) {
           <p className="spinner-text">Cargando Contenido...</p>
         </div>
       ) : (
-        <>
-          {premium ? (
-            <div className="content">
-              <h1>OddsmatcherPremium</h1>
-              <button>atras</button>
-              <button onClick={handleAdelanteClick}>adelante</button>
-              <div dangerouslySetInnerHTML={{ __html: data }} />
-            </div>
-          ) : (
-            <div className="content">
-              <h1>No tienes el Premium</h1>
-              <Link className="btn-form" to="/Premium">
-                Obtener Premium
-              </Link>
-            </div>
-          )}
-        </>
+        <div className="content">
+          <h1>OddsmatcherGratis</h1>
+          <div className="filters">{/* Agregar los componentes de filtro aquí */}</div>
+          <div className="pagination">
+            <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+              Anterior
+            </button>
+            <span>{`${currentPage} de ${totalPages}`}</span>
+            <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+              Siguiente
+            </button>
+          </div>
+          <div className="clear-filters">
+            <button onClick={handleClearFilters}>Limpiar Filtros</button>
+          </div>
+          <div className="lista-datos">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Partido</th>
+                  <th>Competicion</th>
+                  <th>Apuesta</th>
+                  <th>Rating</th>
+                  <th>Casa</th>
+                  <th>Afavor</th>
+                  <th>Contra</th>
+                  <th>Liquidez</th>
+                  <th>Actualizado</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.slice((currentPage - 1) * elementsPerPage, currentPage * elementsPerPage).map((dato, index) => (
+                  <tr key={dato.id} className="container-dato">
+                    <td>{dato.fecha}</td>
+                    <td>{dato.partido}</td>
+                    <td>{dato.competicion}</td>
+                    <td>{dato.apuesta}</td>
+                    <td>{dato.rating}</td>
+                    <td>{dato.casa}</td>
+                    <td>{dato.afavor}</td>
+                    <td>{dato.contra}</td>
+                    <td>{dato.liquidez}</td>
+                    <td>{dato.actualizado}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       )}
 
       <img src={ellipse} alt="imagen de fondo SmartBet" className="fondo-verde dos" />

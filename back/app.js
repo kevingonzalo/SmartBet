@@ -9,6 +9,7 @@ import resetPassword from "./rutas/resetPassword.js";
 import oddsmatcherGratis from "./rutas/OddsmatchedGratis.js";
 import OddsmatcherPremium from "./rutas/OddsmatcherPremium.js";
 import ScrapingGratis from "./rutas/ScrapingGratis.js";
+import ScrapingPremium from "./rutas/ScrapingPremium.js";
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -31,6 +32,7 @@ app.get("/oddsmatcherGratis", oddsmatcherGratis);
 app.get("/OddsmatcherPremium", OddsmatcherPremium);
 // hago scraping de los datos de la pagina web cada 1 hora
 ScrapingGratis();
+ScrapingPremium();
 const PORT = 8000;
 app.listen(PORT, () => {
   console.log(`Servidor encendido en el puerto: ${PORT}`);

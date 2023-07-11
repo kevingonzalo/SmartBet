@@ -1,49 +1,35 @@
-import puppeteer from "puppeteer";
-import dotenv from "dotenv";
+import conexion from "../connect/conexion.js";
 
-dotenv.config();
-const urlScraping = process.env.URL_SCRAPING;
-const user = process.env.USER;
-const password = process.env.PASS;
 const oddsmatcherGratis = async (req, res) => {
   try {
-    const browser = await puppeteer.launch({
-      headless: "new",
-      // colocar la ruta del google chrome (la herramienta "puppeteer" requiere de chrome para ser usado)
-      executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    const selectQuery = "SELECT * FROM gratis";
+    conexion.query(selectQuery, (error, results) => {
+      if (error) {
+        console.error("Error al obtener los datos de la tabla gratis:", error);
+        res.status(500).json({ error: "Error al obtener los datos de la tabla gratis" });
+      } else {
+        const datos = results.map((row) => {
+          return {
+            id: row.id,
+            fecha: row.Fecha,
+            partido: row.Partido,
+            competicion: row.Competicion,
+            apuesta: row.Apuesta,
+            rating: row.Rating,
+            casa: row.Casa,
+            afavor: row.Afavor,
+            contra: row.Contra,
+            liquidez: row.Liquidez,
+            actualizado: row.Actualizado,
+            totalPages: row.totalPages,
+          };
+        });
+        res.status(200).json({ datos });
+      }
     });
-    const page = await browser.newPage();
-
-    // Navegar a la página de inicio de sesión
-    await page.goto(`${urlScraping}/login/`);
-
-    // Rellenar los campos de inicio de sesión
-    await page.type("#user_login", user);
-    await page.type("#user_pass", password);
-
-    // Enviar el formulario de inicio de sesión
-    await Promise.all([
-      // Esperar a que se cargue la nueva página después del inicio de sesión
-      page.waitForNavigation(),
-      page.click("#wp-submit"),
-    ]);
-
-    // Realizar la solicitud GET a la página web deseada
-    await page.goto(`${urlScraping}/oddsmatcher-gratuito-2/`);
-    // Esperar a que el elemento #sbet_widget esté presente en la página
-    await page.waitForSelector("#sbet_widget");
-
-    // Esperar a que el selector específico dentro de #sbet_widget esté presente en la página
-    await page.waitForSelector("#sbet_widget #sbet_table_container");
-
-    // Obtener el contenido dentro del elemento #sbet_widget
-    const sbetWidgetContent = await page.$eval("#sbet_widget", (element) => element.innerHTML);
-
-    res.send(sbetWidgetContent);
-    await browser.close();
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Error al obtener el contenido de la página");
+    console.error("Error al obtener los datos de la tabla gratis:", error);
+    res.status(500).json({ error: "Error al obtener los datos de la tabla gratis" });
   }
 };
 

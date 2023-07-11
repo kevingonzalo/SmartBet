@@ -1,61 +1,43 @@
-#sbet_filters {
-  width: 100%;
-  color: #808088;
-}
-#sbet_pagination,
-.sbet_filter,
-.sbet_button {
-  display: none;
-}
-
-/* tablas */
-#sbet_table_container {
-  color: #808088;
-  width: 100%;
-  margin: auto;
-  background-color: var(--color-white);
-}
-.sbet_header {
-  color: #3f3f3f;
-  font-weight: bold;
-}
-#sbet_table {
-  width: 100%;
-  margin: auto;
-}
-td {
-  padding: 1rem;
-  border-bottom: 0.5px solid #808088;
-}
-
-/* imagen svg pelota */
-.sbet_match {
+.filters {
   display: flex;
-  width: max-content;
-  gap: 3vh;
-  text-align: left;
+  align-items: center;
+  justify-content: center;
 }
-.sbet_match svg {
-  width: 30px;
+.pagination {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 2vh;
 }
-/* imagenes de apuestas */
-.bookie img {
-  width: 90px;
+.pagination button {
+  margin: 0 1vh;
+}
+.pagination span {
+  word-spacing: 1vh;
+}
+.clear-filters {
+  margin: 1vh;
+}
+.pagination button,
+.clear-filters button {
+  background-color: var(--color-green);
+  box-shadow: var(--box-shadow-btn);
+  border-radius: 1.5vh;
+  font-weight: bold;
+  padding: 1vh 1.5vh;
+  border: none;
+}
+.lista-datos {
+  color: rgb(255, 255, 255);
+}
+.container-dato {
+  border: 0.2vh solid white;
+}
+.lista-datos table {
   margin: auto;
+  width: 100%;
 }
-.bookmaker {
-  width: 10%;
-  background-color: rgb(33, 31, 31);
-}
-.back,
-.back-head {
-  background: #a6d8ff !important;
-  font-weight: bold;
-  color: #3f3f3f;
-}
-.lay,
-.lay-head {
-  color: #3f3f3f;
-  background: #fac9d1 !important;
-  font-weight: bold;
+.lista-datos table thead tr {
+  font-size: 2.5vh;
 }
