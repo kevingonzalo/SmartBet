@@ -15,7 +15,7 @@ const ScrapingGratis = async () => {
     //   headless: "new",
     //   executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
     // });
-    //para servidor linux
+    // //para servidor linux
     const browser = await puppeteer.launch({
       headless: "new",
       executablePath: "/usr/bin/google-chrome-stable",
@@ -23,7 +23,7 @@ const ScrapingGratis = async () => {
     const page = await browser.newPage();
 
     // Navegar a la página de inicio de sesión
-    await page.goto(`${urlScraping}/login/`);
+    await page.goto(`${urlScraping}/login/`, { timeout: 60000 });
 
     // Rellenar los campos de inicio de sesión
     await page.type("#user_login", user);
@@ -31,18 +31,18 @@ const ScrapingGratis = async () => {
 
     // Enviar el formulario de inicio de sesión
     await Promise.all([
-      page.waitForNavigation(), // Esperar a que se cargue la nueva página después del inicio de sesión
+      page.waitForNavigation({ timeout: 60000 }), // Esperar a que se cargue la nueva página después del inicio de sesión
       page.click("#wp-submit"),
     ]);
 
     // Realizar scraping y obtener los datos deseados
-    await page.goto(`${urlScraping}/oddsmatcher-gratuito-2/`);
+    await page.goto(`${urlScraping}/oddsmatcher-gratuito-2/`, { timeout: 60000 });
     // Aquí realizas la lógica de scraping para obtener los datos deseados de la página "oddsmatcher-nuevo"
     // Esperar a que el elemento #sbet_widget esté presente en la página
-    await page.waitForSelector("#sbet_widget");
+    await page.waitForSelector("#sbet_widget", { timeout: 60000 });
 
     // Esperar a que el selector específico dentro de #sbet_widget esté presente en la página
-    await page.waitForSelector("#sbet_widget #sbet_table_container");
+    await page.waitForSelector("#sbet_widget #sbet_table_container", { timeout: 60000 });
 
     // Obtener el valor máximo de páginas desde el span con id "sbet_total_pages"
     const totalPages = await page.$eval("#sbet_total_pages", (element) => parseInt(element.textContent));
@@ -90,7 +90,7 @@ const ScrapingGratis = async () => {
       actualizado.push(...actualizadoElements);
       // Navegar a la siguiente página (excepto en la última iteración)
       if (pageNumber !== totalPages) {
-        await page.click("#sbet_next_page"); // Hacer clic en el botón de "Siguiente página"
+        await page.click("#sbet_next_page", { timeout: 60000 }); // Hacer clic en el botón de "Siguiente página"
       }
     }
     for (let i = 0; i < fechas.length; i++) {
@@ -168,7 +168,7 @@ const ScrapingGratis = async () => {
 };
 
 // Configurar temporizador para ejecutar la función cada hora (3600000 ms)
-const intervalo = 3600000; //1 hora en milisegundos
+const intervalo = 3600000; // 1 hora en milisegundos
 setInterval(ScrapingGratis, intervalo);
 
 export default ScrapingGratis;
