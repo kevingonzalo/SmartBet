@@ -10,10 +10,17 @@ const password = process.env.PASS;
 
 const ScrapingPremium = async () => {
   try {
+    // para prubas en windows
+    // const browser = await puppeteer.launch({
+    //   headless: "new",
+    //   executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    // });
+    //para servidor linux
     const browser = await puppeteer.launch({
       headless: "new",
-      executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
+      executablePath: "/usr/bin/google-chrome-stable",
     });
+
     const page = await browser.newPage();
 
     // Navegar a la página de inicio de sesión
