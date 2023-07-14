@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./EstilosHerramientas/Oddsmatcher.css";
 import ellipse from "../img/ellipse.webp";
+import FiltroOddsmatcher from "./FiltroOddsmatcher";
 
 export default function OddsmatcherPremium({ URL }) {
   const [data, setData] = useState([]);
@@ -9,6 +10,11 @@ export default function OddsmatcherPremium({ URL }) {
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const elementsPerPage = 30;
+  const [filters, setFilters] = useState({
+    deporteSeleccionado: [],
+    casasSeleccionadas: [],
+    competicionesSeleccionadas: [],
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,7 +54,18 @@ export default function OddsmatcherPremium({ URL }) {
   };
 
   const handleClearFilters = () => {
-    console.log(3);
+    setFilters({
+      deporteSeleccionado: [],
+      casasSeleccionadas: [],
+      competicionesSeleccionadas: [],
+    });
+  };
+
+  const handleChangeFilter = (filterName, selectedOptions) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterName]: selectedOptions.includes("SeleccionarTodo") ? [] : selectedOptions,
+    }));
   };
 
   return (
@@ -64,8 +81,41 @@ export default function OddsmatcherPremium({ URL }) {
         </div>
       ) : (
         <div className="content">
-          <h1>OddsmatcherGratis</h1>
-          <div className="filters">{/* Agregar los componentes de filtro aquí */}</div>
+          <h1>OddsmatcherPremium</h1>
+          <div className="filters">
+            <div className="container-filtres m-4">
+              <FiltroOddsmatcher
+                label="Deportes"
+                options={[...new Set(data.map((dato) => dato.deporte))]}
+                selectedOptions={filters.deporteSeleccionado}
+                onChange={(selectedOptions) => handleChangeFilter("deporteSeleccionado", selectedOptions)}
+              />
+              <FiltroOddsmatcher
+                label="Casas de apuestas"
+                options={[...new Set(data.map((dato) => dato.casa))]}
+                selectedOptions={filters.casasSeleccionadas}
+                onChange={(selectedOptions) => handleChangeFilter("casasSeleccionadas", selectedOptions)}
+              />
+              <FiltroOddsmatcher
+                label="Competiciones"
+                options={[...new Set(data.map((dato) => dato.competicion))]}
+                selectedOptions={filters.competicionesSeleccionadas}
+                onChange={(selectedOptions) => handleChangeFilter("competicionesSeleccionadas", selectedOptions)}
+              />
+              <FiltroOddsmatcher
+                label="Partidos"
+                options={[...new Set(data.map((dato) => dato.partido))]}
+                selectedOptions={filters.partidosSeleccionados}
+                onChange={(selectedOptions) => handleChangeFilter("partidosSeleccionados", selectedOptions)}
+              />
+              <FiltroOddsmatcher
+                label="Mercados"
+                options={[...new Set(data.map((dato) => dato.apuesta))]}
+                selectedOptions={filters.mercadosSeleccionados}
+                onChange={(selectedOptions) => handleChangeFilter("mercadosSeleccionados", selectedOptions)}
+              />
+            </div>
+          </div>
           <div className="pagination">
             <button onClick={handlePreviousPage} disabled={currentPage === 1}>
               Anterior
@@ -95,20 +145,39 @@ export default function OddsmatcherPremium({ URL }) {
                 </tr>
               </thead>
               <tbody>
-                {data.slice((currentPage - 1) * elementsPerPage, currentPage * elementsPerPage).map((dato, index) => (
-                  <tr key={dato.id} className="container-dato">
-                    <td>{dato.fecha}</td>
-                    <td>{dato.partido}</td>
-                    <td>{dato.competicion}</td>
-                    <td>{dato.apuesta}</td>
-                    <td>{dato.rating}</td>
-                    <td>{dato.casa}</td>
-                    <td>{dato.afavor}</td>
-                    <td>{dato.contra}</td>
-                    <td>{dato.liquidez}</td>
-                    <td>{dato.actualizado}</td>
-                  </tr>
-                ))}
+                {data
+                  .filter((dato) =>
+                    filters.deporteSeleccionado.length === 0 ? true : filters.deporteSeleccionado.includes(dato.deporte)
+                  )
+                  .filter((dato) =>
+                    filters.casasSeleccionadas.length === 0 ? true : filters.casasSeleccionadas.includes(dato.casa)
+                  )
+                  .filter((dato) =>
+                    filters.competicionesSeleccionadas.length === 0
+                      ? true
+                      : filters.competicionesSeleccionadas.includes(dato.competicion)
+                  )
+                  .filter((dato) =>
+                    filters.mercadosSeleccionados.length === 0 ? true : filters.mercadosSeleccionados.includes(dato.apuesta)
+                  )
+                  .filter((dato) =>
+                    filters.partidosSeleccionados.length === 0 ? true : filters.partidosSeleccionados.includes(dato.partido)
+                  )
+                  .slice((currentPage - 1) * elementsPerPage, currentPage * elementsPerPage)
+                  .map((dato, index) => (
+                    <tr key={dato.id} className="container-dato">
+                      <td>{dato.fecha}</td>
+                      <td>{dato.partido}</td>
+                      <td>{dato.competicion}</td>
+                      <td>{dato.apuesta}</td>
+                      <td>{dato.rating}</td>
+                      <td>{dato.casa}</td>
+                      <td>{dato.afavor}</td>
+                      <td>{dato.contra}</td>
+                      <td>{dato.liquidez}</td>
+                      <td>{dato.actualizado}</td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

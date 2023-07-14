@@ -20,7 +20,7 @@ import OddsmatcherPremium from "./components/Herramientas/OddsmatcherPremium";
 import Premium from "./components/Herramientas/Premium";
 import Perfil from "./components/Herramientas/Perfil";
 // url para las peticiones al back
-const URL = "http://192.168.0.22:8000" || process.env.REACT_APP_URL;
+const URL = process.env.REACT_APP_URL || "http://192.168.0.22:8000";
 
 function App() {
   // verifica si hay un inicio de sesion en la web

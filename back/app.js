@@ -24,7 +24,7 @@ app.get("/perfil", perfil);
 app.delete("/logout", logout);
 // Endpoint de recuperar contraseña
 app.post("/recuperarPass", recuperarPass);
-// Endpoint de recuperar contraseña
+// Endpoint de recuperar contraseña y envio de token
 app.put("/resetpassword/:tokenPass", resetPassword);
 // Endpoint para cargar oddsmatcherGratis
 app.get("/oddsmatcherGratis", oddsmatcherGratis);

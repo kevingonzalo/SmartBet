@@ -41,3 +41,24 @@
 .lista-datos table thead tr {
   font-size: 2.5vh;
 }
+.container-filtres {
+  color: white;
+  display: flex;
+  margin: 2vh;
+  gap: 5vh;
+}
+.container-filtres label {
+  font-weight: bold;
+}
+.container-filtres button {
+  background-color: var(--color-green);
+  box-shadow: var(--box-shadow-btn);
+  border-radius: 1.5vh;
+  font-weight: bold;
+  padding: 1vh 1.5vh;
+  border: none;
+  color: black;
+}
+.container-filtres button:hover {
+  background-color: black;
+}

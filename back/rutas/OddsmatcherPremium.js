@@ -12,6 +12,7 @@ const OddsmatcherPremium = async (req, res) => {
           return {
             id: row.id,
             fecha: row.Fecha,
+            deporte: row.Deporte,
             partido: row.Partido,
             competicion: row.Competicion,
             apuesta: row.Apuesta,

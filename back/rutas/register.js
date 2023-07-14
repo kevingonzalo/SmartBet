@@ -1,6 +1,8 @@
 import bcrypt from "bcrypt";
 import connection from "../connect/connection.js";
 import nodemailer from "nodemailer";
+import emailValidator from "email-validator";
+
 // Configuración del servicio de correo electrónico
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -15,9 +17,8 @@ const register = async (req, res) => {
   const MIN_PASSWORD_LENGTH = 8;
   const MAX_PASSWORD_LENGTH = 20;
   // verifica que el mail sea valido
-  const emailRegex = /^[\w-]+(?:\.[\w-]+)*@(?:gmail|hotmail|outlook|yahoo)\.[a-zA-Z]{2,7}$/;
-  if (!email.match(emailRegex)) {
-    res.status(204).json({ error: `¡El correo debe ser de tipo "ejemplo@gmail.com"!` });
+  if (!emailValidator.validate(email)) {
+    res.status(204).json({ error: `¡El correo debe ser de tipo "ejemplo@dominio.com"!` });
     return;
   }
 
