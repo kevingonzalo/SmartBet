@@ -67,7 +67,7 @@ export default function OddsmatcherPremium({ URL }) {
   const handleChangeFilter = (filterName, selectedOptions) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
-      [filterName]: selectedOptions.includes("SeleccionarTodo") ? [] : selectedOptions,
+      [filterName]: selectedOptions && selectedOptions.includes("SeleccionarTodo") ? [] : selectedOptions,
     }));
   };
 
