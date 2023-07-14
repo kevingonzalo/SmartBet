@@ -11,15 +11,15 @@ const password = process.env.PASS;
 const ScrapingPremium = async () => {
   try {
     // para pruebas en Windows
-    const browser = await puppeteer.launch({
-      headless: "new",
-      executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
-    });
-    // //para servidor Linux
     // const browser = await puppeteer.launch({
     //   headless: "new",
-    //   executablePath: "/usr/bin/google-chrome-stable",
+    //   executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
     // });
+    // //para servidor Linux
+    const browser = await puppeteer.launch({
+      headless: "new",
+      executablePath: "/usr/bin/google-chrome-stable",
+    });
 
     const page = await browser.newPage();
 
