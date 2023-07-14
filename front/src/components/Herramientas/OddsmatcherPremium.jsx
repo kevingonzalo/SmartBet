@@ -14,6 +14,8 @@ export default function OddsmatcherPremium({ URL }) {
     deporteSeleccionado: [],
     casasSeleccionadas: [],
     competicionesSeleccionadas: [],
+    partidosSeleccionados: [],
+    mercadosSeleccionados: [],
   });
 
   useEffect(() => {
@@ -21,7 +23,6 @@ export default function OddsmatcherPremium({ URL }) {
       try {
         const response = await axios.get(`${URL}/OddsmatcherPremium`);
         const datos = response.data.datos;
-        console.log(datos);
         setTotalPages(datos[0].totalPages);
         setIsLoading(false);
         setData(datos);
@@ -58,6 +59,8 @@ export default function OddsmatcherPremium({ URL }) {
       deporteSeleccionado: [],
       casasSeleccionadas: [],
       competicionesSeleccionadas: [],
+      partidosSeleccionados: [],
+      mercadosSeleccionados: [],
     });
   };
 

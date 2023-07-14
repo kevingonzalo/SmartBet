@@ -24,7 +24,6 @@ export default function OddsmatcherGratis({ URL }) {
       try {
         const response = await axios.get(`${URL}/oddsmatcherGratis`);
         const datos = response.data.datos;
-        console.log(datos);
         setTotalPages(datos[0].totalPages);
         setIsLoading(false);
         setData(datos);
